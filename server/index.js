@@ -6,14 +6,13 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import productRoutes from "./routes/productRoutes.js";
 import router from "./routes/testRoute.js";
+import brandRoutes from "./routes/brandRoutes.js";
 
 // import productModel from "./models/productModel.js";
 dotenv.config();
 // const router = express.Router();
 
 const app=express();
-
-
 
 const addMiddlewares = () => {
     app.use(express.json());
@@ -24,12 +23,10 @@ const addMiddlewares = () => {
 
 }
 
-
-
-
 const addRoutes = () => {
     app.use("/api", router);
     app.use("/api/products", productRoutes);
+    app.use("/api/brands", brandRoutes);
     
     // router.get("/test", (req, res) =>{
     //     res.json({
