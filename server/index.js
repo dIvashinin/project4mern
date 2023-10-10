@@ -24,6 +24,13 @@ router.get("/test", (req, res) =>{
     });
 });
 
+router.get("/products", (req, res) =>{
+    res.json({
+       message: "all products", 
+    });
+});
+
+
 const DBConnection = async () => {
     console.log('process.env.DB :>> ', process.env.DB);
 try {
