@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 // const express = require("express");
 import cors from "cors";
 import * as dotenv from "dotenv";
+import productModel from "./models/productModel.js";
 dotenv.config();
 const router = express.Router();
 
@@ -18,13 +19,18 @@ app.use(express.urlencoded({
 }));
 
 app.use("/api", router);
-router.get("/test", (req, res) =>{
-    res.json({
-       message: "test route", 
-    });
-});
 
-router.get("/products", (req, res) =>{
+// router.get("/test", (req, res) =>{
+//     res.json({
+//        message: "test route", 
+//     });
+// });
+
+router.get("/products", async (req, res) =>{
+
+    const allProducts = await productModel.find();
+    console.log('allProducts :>> ', allProducts);
+
     res.json({
        message: "all products", 
     });
