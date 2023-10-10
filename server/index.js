@@ -4,9 +4,12 @@ import mongoose from "mongoose";
 // const express = require("express");
 import cors from "cors";
 import * as dotenv from "dotenv";
-import productModel from "./models/productModel.js";
+import productRoutes from "./routes/productRoutes.js";
+import router from "./routes/testRoute.js";
+
+// import productModel from "./models/productModel.js";
 dotenv.config();
-const router = express.Router();
+// const router = express.Router();
 
 const app=express();
 
@@ -26,6 +29,7 @@ const addMiddlewares = () => {
 
 const addRoutes = () => {
     app.use("/api", router);
+    app.use("/api/products", productRoutes);
     
     // router.get("/test", (req, res) =>{
     //     res.json({
@@ -33,21 +37,8 @@ const addRoutes = () => {
     //     });
     // });
     
-    router.get("/products", async (req, res) =>{
-    
-        const allProducts = await productModel.find();
-        console.log('allProducts :>> ', allProducts);
-    
-        res.json({
-        //    message: "all products", 
-        data: allProducts,
-        info: {
-            number: allProducts.length,
-            pages: 1,
-        },
-        });
-    });   
-}
+    // router.get("/products");   
+};
 
 
 const DBConnection = async () => {
