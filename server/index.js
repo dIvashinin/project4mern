@@ -10,35 +10,48 @@ const router = express.Router();
 
 const app=express();
 
-const port = process.env.PORT || 5001;
 
-app.use(express.json());
-app.use(cors());
-app.use(express.urlencoded({
-    extended: true,
-}));
 
-app.use("/api", router);
+const addMiddlewares = () => {
+    app.use(express.json());
+    app.use(cors());
+    app.use(express.urlencoded({
+        extended: true,
+    }));
 
-// router.get("/test", (req, res) =>{
-//     res.json({
-//        message: "test route", 
-//     });
-// });
+}
 
-router.get("/products", async (req, res) =>{
 
-    const allProducts = await productModel.find();
-    console.log('allProducts :>> ', allProducts);
 
-    res.json({
-       message: "all products", 
-    });
-});
+
+const addRoutes = () => {
+    app.use("/api", router);
+    
+    // router.get("/test", (req, res) =>{
+    //     res.json({
+    //        message: "test route", 
+    //     });
+    // });
+    
+    router.get("/products", async (req, res) =>{
+    
+        const allProducts = await productModel.find();
+        console.log('allProducts :>> ', allProducts);
+    
+        res.json({
+        //    message: "all products", 
+        data: allProducts,
+        info: {
+            number: allProducts.length,
+            pages: 1,
+        },
+        });
+    });   
+}
 
 
 const DBConnection = async () => {
-    console.log('process.env.DB :>> ', process.env.DB);
+    // console.log('process.env.DB :>> ', process.env.DB);
 try {
    await mongoose.connect(process.env.DB);
    console.log('connection to MongoDB established :>> '); 
@@ -47,8 +60,19 @@ try {
     
 }
 };
-DBConnection();
 
-app.listen(port, () => {
-    console.log("server running in port:", port);
-});
+// DBConnection();
+
+const startServer = () => {
+    const port = process.env.PORT || 5001;
+    app.listen(port, () => {
+        console.log("server running in port:", port);
+    });
+};
+
+(async function controller() {
+    await DBConnection();
+    addMiddlewares();
+    addRoutes();
+    startServer();
+})();
