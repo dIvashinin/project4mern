@@ -39,7 +39,7 @@ const addRoutes = () => {
 
 
 const DBConnection = async () => {
-    // console.log('process.env.DB :>> ', process.env.DB);
+    console.log('process.env.DB :>> ', process.env.DB);
 try {
    await mongoose.connect(process.env.DB);
    console.log('connection to MongoDB established :>> '); 
