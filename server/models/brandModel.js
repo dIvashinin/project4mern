@@ -13,6 +13,7 @@ const brandSchema = new mongoose.Schema({
         type:String,
         required: true,
     },
+    product:{type:mongoose.Schema.Types.ObjectId, ref: "product"},
 });
 
 const brandModel = mongoose.model("brand", brandSchema);

@@ -25,11 +25,14 @@ const getAllProducts = async (req, res) =>{
 const getProductsByCountryMadeIn = async (req, res) => {
 //in request object we can see for ex what we typed, our path etc
     // console.log('req :>> ', req);
+    // one way
     // const countryMadeIn = req.params.countryMadeIn;
+    // or with destructuring
   const { countryMadeIn } = req.params;
   const { likes } = req.query;
 
   if (likes) {
+     //do stuff using likes
     try {
       const products = await productModel.find({
         countryMadeIn: countryMadeIn,
@@ -41,8 +44,6 @@ const getProductsByCountryMadeIn = async (req, res) => {
         products,
       });
     } catch (error) {}
-
-    //do stuff using likes
   } else {
     //all of the stuff below happens when there are no "likes" sent from the client.
     try {
