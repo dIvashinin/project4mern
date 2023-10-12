@@ -22,7 +22,7 @@ const getAllProducts = async (req, res) =>{
     }
 };
 
-const getProductsBycountryMadeIn = async (req, res) => {
+const getProductsByCountryMadeIn = async (req, res) => {
 //in request object we can see for ex what we typed, our path etc
     // console.log('req :>> ', req);
     // const countryMadeIn = req.params.countryMadeIn;
@@ -33,6 +33,7 @@ const getProductsBycountryMadeIn = async (req, res) => {
     try {
       const products = await productModel.find({
         countryMadeIn: countryMadeIn,
+        //gte = Greater Than Equal >=
         likes: { $gte: likes },
       });
       res.status(200).json({
@@ -69,4 +70,4 @@ const getProductsBycountryMadeIn = async (req, res) => {
 
 
 
-export {getAllProducts, getProductsBycountryMadeIn};
+export {getAllProducts, getProductsByCountryMadeIn};

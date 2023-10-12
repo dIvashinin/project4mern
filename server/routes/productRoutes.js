@@ -1,10 +1,10 @@
 import express from "express";
-import { getAllProducts, getProductsBycountryMadeIn } from "../controller/productController.js";
+import { getAllProducts, getProductsByCountryMadeIn } from "../controller/productController.js";
 
 
 const router = express.Router();
 
 router.get("/all", getAllProducts);
-router.get("/:countryMadeIn", getProductsBycountryMadeIn);
+router.get("/:countryMadeIn", getProductsByCountryMadeIn);
 
 export default router;
