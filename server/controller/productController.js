@@ -17,4 +17,9 @@ const getAllProducts = async (req, res) =>{
     });
 };
 
-export {getAllProducts};
+const getCitiesByCountryCode = async (req, res) => {
+//in request object we can see for ex what we typed, our path etc
+    // console.log('req :>> ', req);
+}
+
+export {getAllProducts, getCitiesByCountryCode};
