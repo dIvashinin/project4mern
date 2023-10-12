@@ -1,10 +1,13 @@
+import { populate } from "dotenv";
 import productModel from "../models/productModel.js";
 
 const getAllProducts = async (req, res) =>{
     // console.log('req :>> ', req);
     
     try{
-        const allProducts = await productModel.find();
+    //we make 2 requests to DB here - find and populate. We need to think about how many operations are ok for us
+        const allProducts = await productModel.find().populate("brand");
+        
         // console.log('allProducts :>> ', allProducts);
         if (allProducts.length<1) {
             res.status(204).json({message: "no products stored"});
@@ -38,7 +41,9 @@ const getProductsByCountryMadeIn = async (req, res) => {
         countryMadeIn: countryMadeIn,
         //gte = Greater Than Equal >=
         likes: { $gte: likes },
-      });
+    //if we wanna see populate when we check likes params, then we need to do it here
+      }).populate({path: "brand", select: ["name","season"] });
+    //   });
       res.status(200).json({
         number: products.length,
         products,

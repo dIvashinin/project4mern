@@ -12,6 +12,8 @@ const productSchema = new mongoose.Schema({
     likes: {
         type:Number,
     },
+    //as it can have more than 1 element inside, it's an array [...]
+    brand:[{type:mongoose.Schema.Types.ObjectId, ref: "brand"}],
 });
 
 const productModel = mongoose.model("product", productSchema);
