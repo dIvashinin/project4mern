@@ -4,16 +4,20 @@ const uploadImage = async (req, res) => {
 // console.log("upload image controller working");
 console.log('req.file :>> ', req.file);
 
-// upload file to cloudinary
-try {
-    const uploadedImage = await cloudinary.uploader.upload(req.file.path);
-    console.log('uploadedImage :>> ', uploadedImage);
-} catch (error) {
-   console.log('error :>> ', error); 
+if (req.file) {
+    // if there's a field called "file" in the request, we try to upload file to cloudinary
+    try {
+        const uploadedImage = await cloudinary.uploader.upload(req.file.path, {folder:"project4mern"});
+        console.log('uploadedImage :>> ', uploadedImage);
+        // if uploadedImage is successful (returns a valid object), save that URL into the user collection
+    } catch (error) {
+       console.log('error :>> ', error); 
+    }
+} else{
+    res.status(500).json({
+        error: "file type is not supported"
+    });
 }
-
-
-
 };
 
 export {uploadImage};
