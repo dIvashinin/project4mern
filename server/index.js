@@ -7,6 +7,7 @@ import * as dotenv from "dotenv";
 import productRoutes from "./routes/productRoutes.js";
 import router from "./routes/testRoute.js";
 import brandRoutes from "./routes/brandRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 // import productModel from "./models/productModel.js";
 dotenv.config();
@@ -27,6 +28,7 @@ const addRoutes = () => {
     app.use("/api", router);
     app.use("/api/products", productRoutes);
     app.use("/api/brands", brandRoutes);
+    app.use("/api/users", userRoutes);
     
     // router.get("/test", (req, res) =>{
     //     res.json({
