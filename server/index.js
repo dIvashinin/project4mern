@@ -8,6 +8,7 @@ import productRoutes from "./routes/productRoutes.js";
 import router from "./routes/testRoute.js";
 import brandRoutes from "./routes/brandRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import cloudinaryConfig from "./config/cloudinaryConfig.js";
 
 // import productModel from "./models/productModel.js";
 dotenv.config();
@@ -21,7 +22,7 @@ const addMiddlewares = () => {
     app.use(express.urlencoded({
         extended: true,
     }));
-
+    cloudinaryConfig()
 }
 
 const addRoutes = () => {
