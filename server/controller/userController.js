@@ -25,7 +25,10 @@ if (req.file) {
 };
 
 const register = async (req, res) => {
-    console.log("register controller working");
+    // console.log("register controller working");
+// receive all the newUser info (sent by client) in the body of the request
+//process that info and store in the DB
+console.log('req.body :>> ', req.body);
 };
 
 export {uploadImage, register};
