@@ -24,4 +24,8 @@ if (req.file) {
 }
 };
 
-export {uploadImage};
+const register = async (req, res) => {
+    console.log("register controller working");
+};
+
+export {uploadImage, register};
