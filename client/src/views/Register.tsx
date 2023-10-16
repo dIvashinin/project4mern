@@ -1,8 +1,26 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 
+type UserImage = {
+    userImage: string
+}
+
+interface User extends UserImage {
+    userName: string;
+    email: string;
+    password: string;
+    // userImage: string;
+}
+
+
 function Register() {
 
-    const [selectedFile, setSelectedFile] = useState<File | String>("")
+    const [selectedFile, setSelectedFile] = useState<File | String>("");
+    const [newUser, setNewUser] = useState<User>({
+        userName: "",
+        email: "",
+        password: "",
+        userImage: "", 
+    });
 
 const handleFileInput = (e:ChangeEvent<HTMLInputElement>) => {
 console.log('e :>> ', e);
@@ -25,6 +43,9 @@ const requestOptions = {
 try {
     const response = await fetch("http://localhost:5001/api/users/imageUpload", requestOptions);
     const result = await response.json();
+    console.log('result :>> ', result);
+    //here we get the URL for the user profile pic
+    setNewUser({...newUser, userImage:result.userImage})
 } catch (error) {
     console.log('error :>> ', error);
 }
@@ -41,6 +62,11 @@ try {
                 <button type='submit'>upload image</button>
             </form>
         </div>
+        {/* some condition */}
+        {newUser.userImage && (
+        <div>
+            <img src={newUser.userImage} alt="user-avatar-picture" />
+           </div>)}
     </div>
   );
 }
