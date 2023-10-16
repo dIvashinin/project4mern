@@ -1,4 +1,5 @@
 import {v2 as cloudinary} from 'cloudinary';
+import userModel from '../models/userModel';
 
 const uploadImage = async (req, res) => {
 // console.log("upload image controller working");
@@ -29,6 +30,24 @@ const register = async (req, res) => {
 // receive all the newUser info (sent by client) in the body of the request
 //process that info and store in the DB
 console.log('req.body :>> ', req.body);
+// destructured version
+// const {userName, email, password, userImage } = req.body
+
+//before creating new user we need to hash user password by using Bcrypt
+
+//create new user
+
+try {
+    const newUser = new userModel({
+      userName: req.body.userName,
+      email: req.body.email,
+      password: req.body.userName,
+      userImage: req.body.userImage,
+    })
+} catch (error) {
+    
+}
+
 };
 
 export {uploadImage, register};
