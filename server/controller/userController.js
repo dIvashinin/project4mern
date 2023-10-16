@@ -1,5 +1,5 @@
 import {v2 as cloudinary} from 'cloudinary';
-import userModel from '../models/userModel';
+import userModel from '../models/userModel.js';
 
 const uploadImage = async (req, res) => {
 // console.log("upload image controller working");
