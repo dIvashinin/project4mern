@@ -83,4 +83,8 @@ try {
 }
 };
 
-export {uploadImage, register};
+const login = async (req, res) => {
+console.log("login controller");
+}
+
+export {uploadImage, register, login};
