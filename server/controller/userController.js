@@ -1,6 +1,6 @@
 import {v2 as cloudinary} from 'cloudinary';
 import userModel from '../models/userModel.js';
-import { hashPassword } from '../utils/hashPassword.js';
+import { hashPassword, verifyPassword } from '../utils/passwordServices.js';
 
 const uploadImage = async (req, res) => {
 // console.log("upload image controller working");
@@ -84,7 +84,42 @@ try {
 };
 
 const login = async (req, res) => {
-console.log("login controller");
+// console.log("login controller");
+console.log('req.body :>> ', req.body);
+//check if the user exists in our DB
+//we need email or id
+//findOne or findByID can be used
+try {
+    const existingUser = await userModel.findOne({email:req.body.email})
+    if (!existingUser) {
+        // if user doesn't exist, send appropriate response to the client
+        res.status(404).json({
+            msg:"no user found with this email",
+        });
+    } else {
+// if user exists in our DB, we check password and we need bcrypt again - check password
+const checkPassword = await verifyPassword(req.body.password, existingUser.password);
+
+if (!checkPassword) {
+    //this means received password dont match the one in DB
+    res.status(400).json({
+        msg: "wrong password, try again",
+    });
 }
+if (checkPassword) {
+    //this means received password MATCH the on in DB
+   //token JWT
+   res.status(200).json({
+    msg: "you are logged in",
+});
+    }
+}
+
+} catch (error) {
+   res.status(500).json({
+    msg:"i dont have a clue"
+   });
+}
+};
 
 export {uploadImage, register, login};
