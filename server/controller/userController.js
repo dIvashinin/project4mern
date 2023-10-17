@@ -39,32 +39,42 @@ console.log('req.body :>> ', req.body);
 try {
     const hashedPassword = await hashPassword (req.body.password) 
     if (hashedPassword) {
+        //check if user already exists
+        const existingUser = await userModel.findOne({email: req.body.email})
 
-        try {
-    //create new user
-            const newUser = new userModel({
-              userName: req.body.userName,
-              email: req.body.email,
-            //   password: req.body.userName, // it's not coming from here. it needs to be hashed
-                password: hashedPassword,
-              userImage: req.body.userImage,
-            });
-            const savedUser = await newUser.save()
-            res.status(201).json({
-                msg: "new user registered",
-                user:{
-                    userName:savedUser.userName,
-                    email: savedUser.email,
-                    userImage: savedUser.userImage
-                }
+        if (existingUser) {
+            res.status(200).json( {
+                message: "email already exists in the DB"
             })
-        } catch (error) {
-            console.log('error saving user:>> ', error);
-            res.status(500).json({
-                msg:"something went wrong registering the user",
-            });
+        } else {
+            // if there's no such user, we create new user
+            try {
+                //create new user
+                        const newUser = new userModel({
+                          userName: req.body.userName,
+                          email: req.body.email,
+                        //   password: req.body.userName, // it's not coming from here. it needs to be hashed
+                            password: hashedPassword,
+                          userImage: req.body.userImage,
+                        });
+                        const savedUser = await newUser.save()
+                        res.status(201).json({
+                            msg: "new user registered",
+                            user:{
+                                userName:savedUser.userName,
+                                email: savedUser.email,
+                                userImage: savedUser.userImage
+                            }
+                        })
+                    } catch (error) {
+                        console.log('error saving user:>> ', error);
+                        res.status(500).json({
+                            msg:"something went wrong registering the user",
+                        });
+                    }
+                }
         }
-    }
+ 
 } catch (error) {
     console.log('error :>> ', error);
     res.status(500).json({
