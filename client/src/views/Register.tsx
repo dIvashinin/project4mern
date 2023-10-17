@@ -50,10 +50,30 @@ try {
     console.log('error :>> ', error);
 }
     };
+
+const handleRegisterInput = () => {
+
+}
+
+
   return (
     <div>
         <h2>Register</h2>
         <div>
+            <div>
+                <form className='input-form'>
+                   <input type="text" name="userName" id="userName" onChange={handleRegisterInput}/>
+                   <label htmlFor="userName">user name</label>
+                   <input type="text" name="email" id="email" onChange={handleRegisterInput}/>
+                   <label htmlFor="email">email</label>
+                   <input type="text" name="password" id="password" onChange={handleRegisterInput}/>
+                   <label htmlFor="password">password</label>
+
+                </form>
+            </div>
+
+
+
             {/* first we do trick with e function and copy what type is this event */}
             {/* then we change into our function name... */}
             {/* <form onSubmit={(e)=>}> */}
