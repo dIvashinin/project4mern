@@ -1,5 +1,6 @@
 import {v2 as cloudinary} from 'cloudinary';
 import userModel from '../models/userModel.js';
+import { hashPassword } from '../utils/hashPassword.js';
 
 const uploadImage = async (req, res) => {
 // console.log("upload image controller working");
@@ -35,19 +36,41 @@ console.log('req.body :>> ', req.body);
 
 //before creating new user we need to hash user password by using Bcrypt
 
-//create new user
-
 try {
-    const newUser = new userModel({
-      userName: req.body.userName,
-      email: req.body.email,
-      password: req.body.userName,
-      userImage: req.body.userImage,
-    })
-} catch (error) {
-    
-}
+    const hashedPassword = await hashPassword (req.body.password) 
+    if (hashedPassword) {
 
+        try {
+    //create new user
+            const newUser = new userModel({
+              userName: req.body.userName,
+              email: req.body.email,
+            //   password: req.body.userName, // it's not coming from here. it needs to be hashed
+                password: hashedPassword,
+              userImage: req.body.userImage,
+            });
+            const savedUser = await newUser.save()
+            res.status(201).json({
+                msg: "new user registered",
+                user:{
+                    userName:savedUser.userName,
+                    email: savedUser.email,
+                    userImage: savedUser.userImage
+                }
+            })
+        } catch (error) {
+            console.log('error saving user:>> ', error);
+            res.status(500).json({
+                msg:"something went wrong registering the user",
+            });
+        }
+    }
+} catch (error) {
+    console.log('error :>> ', error);
+    res.status(500).json({
+        msg:"something went wrong",
+    });
+}
 };
 
 export {uploadImage, register};
