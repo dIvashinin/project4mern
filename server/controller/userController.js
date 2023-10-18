@@ -1,6 +1,7 @@
 import {v2 as cloudinary} from 'cloudinary';
 import userModel from '../models/userModel.js';
 import { hashPassword, verifyPassword } from '../utils/passwordServices.js';
+import { generateToken } from '../utils/tokenServices.js';
 
 const uploadImage = async (req, res) => {
 // console.log("upload image controller working");
@@ -108,7 +109,9 @@ if (!checkPassword) {
 }
 if (checkPassword) {
     //this means received password MATCH the on in DB
-   //token JWT
+   //generate token JWT
+    const token = generateToken(existingUser._id); 
+
    res.status(200).json({
     msg: "you are logged in",
 });
