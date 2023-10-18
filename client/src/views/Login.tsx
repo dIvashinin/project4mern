@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 
 type loginCredentials = {
     email: string;
@@ -15,11 +15,16 @@ console.log('e.target.name :>> ', e.target.name);
 setLoginCredentials({...loginCredentials as loginCredentials, [e.target.name]:e.target.value,});
 };
 
+const handleSubmitLogin = async (e: FormEvent<HTMLFormElement>) => {
+e.preventDefault();
+console.log('loginCredentials :>> ', loginCredentials);
+};
+
   return (
     <div>
       <h2>Login</h2>
       <div>
-        <form className='input-form' action="">
+        <form className='input-form' onSubmit={handleSubmitLogin}>
           <input
             type="text"
             name="email"
