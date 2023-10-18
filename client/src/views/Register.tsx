@@ -89,11 +89,11 @@ try {
         <div>
             <div>
                 <form className='input-form' onSubmit={handleSubmitRegister}>
-                   <input type="text" name="userName" id="userName" onChange={handleRegisterInput}/>
+                   <input type="text" name="userName" id="userName" placeholder='user name...' onChange={handleRegisterInput}/>
                    <label htmlFor="userName">user name</label>
-                   <input type="text" name="email" id="email" onChange={handleRegisterInput}/>
+                   <input type="text" name="email" id="email" placeholder='email...' onChange={handleRegisterInput}/>
                    <label htmlFor="email">email</label>
-                   <input type="text" name="password" id="password" onChange={handleRegisterInput}/>
+                   <input type="text" name="password" id="password" placeholder='password...' onChange={handleRegisterInput}/>
                    <label htmlFor="password">password</label>
                     <button type='submit'>register</button>
                 </form>
