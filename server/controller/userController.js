@@ -108,9 +108,26 @@ if (!checkPassword) {
     });
 }
 if (checkPassword) {
-    //this means received password MATCH the on in DB
+    //this means received password MATCH the one in DB
    //generate token JWT
     const token = generateToken(existingUser._id); 
+    if (token) {
+      //all ok: email exists, password correct, token is generated 
+      res.status(200).json({
+        msg: "login successful",
+        //and it's useful to send some (! not the password) info about the user to front-end
+        user: {
+            userName:existingUser.userName,
+            email:existingUser.email,
+            userImage:existingUser.userImage
+        },
+        token,
+      });
+    } else {
+        console.log("error generating token");
+        res.status(400).json({
+            msg: "smth went wrong with your request",  
+    });
 
    res.status(200).json({
     msg: "you are logged in",
@@ -118,11 +135,12 @@ if (checkPassword) {
     }
 }
 
+} 
 } catch (error) {
    res.status(500).json({
-    msg:"i dont have a clue"
+    msg:"i dont have a clue",
    });
 }
-};
 
+}
 export {uploadImage, register, login};
