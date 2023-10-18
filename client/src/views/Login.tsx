@@ -1,23 +1,61 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
-type loginCredentials = {
+type LoginCredentials = {
     email: string;
-    psssword: string;
+    password: string;
 };
-
+type User = {
+    userName: string;
+    email: string;
+    userImage?: string;
+}
+type LoginResponse = {
+    msg: string;
+    user: User;
+    token: string;
+};
+// type TokenType = string;
 
 function Login() {
 
-const [loginCredentials, setLoginCredentials] = useState<loginCredentials | null>(null);
+const [loginCredentials, setLoginCredentials] = useState<LoginCredentials | null>(null);
 
 const handleLoginInput = (e: ChangeEvent<HTMLInputElement>) => {
 console.log('e.target.name :>> ', e.target.name);
-setLoginCredentials({...loginCredentials as loginCredentials, [e.target.name]:e.target.value,});
+setLoginCredentials({...loginCredentials as LoginCredentials, [e.target.name]:e.target.value,});
 };
 
 const handleSubmitLogin = async (e: FormEvent<HTMLFormElement>) => {
 e.preventDefault();
 console.log('loginCredentials :>> ', loginCredentials);
+
+//here fetch code from postman login request
+
+//why don't i have headers?
+
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+const urlencoded = new URLSearchParams();
+urlencoded.append("email", loginCredentials!.email);
+urlencoded.append("password", loginCredentials!.password);
+
+const requestOptions = {
+  method: 'POST',
+  body: urlencoded,
+};
+try {
+    const response = await fetch("http://localhost:5001/api/users/login", requestOptions);
+    if (response.ok) {
+        const result:LoginResponse = await response.json();
+        console.log('result :>> ', result.user.userName);
+        const token = result.token;
+    }
+// built-in type of Error
+} catch (err) {
+    const error = err as Error
+   console.log('error :>> ', error.message); 
+}
 };
 
   return (
