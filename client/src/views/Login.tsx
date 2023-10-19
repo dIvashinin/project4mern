@@ -48,12 +48,17 @@ try {
     const response = await fetch("http://localhost:5001/api/users/login", requestOptions);
     if (response.ok) {
         const result:LoginResponse = await response.json();
-        console.log('result :>> ', result.user.userName);
+        // console.log('result :>> ', result.user.userName);
+        console.log('result :>> ', result);
         const token = result.token;
+        // we need a place to store token - either Local Storage or Cookies
+        if (token) {
+            localStorage.setItem("token", token);
+        }
     }
 // built-in type of Error
 } catch (err) {
-    const error = err as Error
+    const error = err as Error;
    console.log('error :>> ', error.message); 
 }
 };
