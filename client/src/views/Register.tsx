@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 type UserImage = {
     userImage: string
@@ -32,7 +32,7 @@ setSelectedFile(e.target.files?.[0] || "");
 e.preventDefault();
 // then we use postman, send request, go to code snippet and copy JSFetch
 const formdata = new FormData();
-formdata.append("userImage", selectedFile);
+formdata.append("userImage", selectedFile as File);
 
 const requestOptions = {
   method: 'POST',
