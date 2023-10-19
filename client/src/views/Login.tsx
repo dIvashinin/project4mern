@@ -74,15 +74,15 @@ try {
           <input
             type="text"
             name="email"
-            id="email"
+            id="email-login"
             placeholder="email..."
             onChange={handleLoginInput}
           />
           <label htmlFor="email">email</label>
           <input
-            type="text"
+            type="password"
             name="password"
-            id="password"
+            id="password-login"
             placeholder="password..."
                onChange={handleLoginInput}
           />

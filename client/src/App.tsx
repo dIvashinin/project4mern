@@ -1,6 +1,6 @@
 // import { useState } from 'react'
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Login from "./views/Login";
 import Register from "./views/Register";
 
@@ -8,6 +8,7 @@ import Register from "./views/Register";
 
 function App() {
   
+  const [isUserLogged, setIsUserLogged] = useState(false);
   const isUserLoggedIn = () => {
     const token = localStorage.getItem("token");
     //or shorter in one line what's below
@@ -18,20 +19,28 @@ function App() {
     //    return false 
     // }
 };
+
+const logout = () => {
+  localStorage.removeItem("token");
+  setIsUserLogged (false);
+}
+
 useEffect(() => {
   const isLoggedIn = isUserLoggedIn();
   if (isLoggedIn) {
     console.log("user is logged in");
+    setIsUserLogged(true);
   }else {
     console.log("user is not logged in");
+    setIsUserLogged(false);
   }
-}, []);
+}, [isUserLogged]);
 
   return (
     <>
      <h1>Store</h1> 
      <hr />
-    <button>logout</button>
+    <button onClick={logout}>logout</button>
      <hr />
      <Register/>
      <hr />

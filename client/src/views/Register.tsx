@@ -93,7 +93,7 @@ try {
                    <label htmlFor="userName">user name</label>
                    <input type="text" name="email" id="email" placeholder='email...' onChange={handleRegisterInput}/>
                    <label htmlFor="email">email</label>
-                   <input type="text" name="password" id="password" placeholder='password...' onChange={handleRegisterInput}/>
+                   <input type="password" name="password" id="password" placeholder='password...' onChange={handleRegisterInput}/>
                    <label htmlFor="password">password</label>
                     <button type='submit'>register</button>
                 </form>
