@@ -15,6 +15,7 @@ import Register from "../views/Register";
 import About from "../views/About";
 import Navbar from "../components/Navbar";
 import Products from "../views/Products";
+import ErrorPage from "../views/ErrorPage";
 
 
 // import './App.css';
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
       <Route path="about" element = {<About/>} />
       <Route path="register" element = {<Register/>} />
       <Route path="login" element = {<Login/>} />
+      <Route path="*" element = {<ErrorPage/>} />
     </Route>
   )
 );

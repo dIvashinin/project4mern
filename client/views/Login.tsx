@@ -114,8 +114,8 @@ useEffect(() => {
           />
           <label htmlFor="password">password</label>
           <button type="submit">login</button>
-          <button onClick={logout}>logout</button>
         </form>
+          <button onClick={logout}>logout</button>
       </div>
     </div>
   );
