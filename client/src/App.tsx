@@ -1,12 +1,16 @@
 // import { useState } from 'react'
 
 import { useEffect, useState } from "react";
-import Login from "./views/Login";
-import Register from "./views/Register";
+import Login from "../views/Login";
+import Register from "../views/Register";
 
 // import './App.css'
 
 function App() {
+
+  //router
+
+
   
   const [isUserLogged, setIsUserLogged] = useState(false);
   const isUserLoggedIn = () => {

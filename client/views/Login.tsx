@@ -31,7 +31,7 @@ console.log('loginCredentials :>> ', loginCredentials);
 
 //here fetch code from postman login request
 
-//why don't i have headers?
+//why don't i have headers? ok, needed to fill in the 'Headers' tab
 
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -62,9 +62,6 @@ try {
    console.log('error :>> ', error.message); 
 }
 };
-
-
-
 
   return (
     <div>
