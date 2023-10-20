@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 type LoginCredentials = {
     email: string;
@@ -63,6 +63,35 @@ try {
 }
 };
 
+  const [isUserLogged, setIsUserLogged] = useState(false);
+  const isUserLoggedIn = () => {
+    const token = localStorage.getItem("token");
+    //or shorter in one line what's below
+    return token ? true : false
+    // if (token){
+    //     return true
+    // }else {
+    //    return false 
+    // }
+};
+
+const logout = () => {
+  localStorage.removeItem("token");
+  setIsUserLogged (false);
+}
+
+useEffect(() => {
+  const isLoggedIn = isUserLoggedIn();
+  if (isLoggedIn) {
+    console.log("user is logged in");
+    setIsUserLogged(true);
+  }else {
+    console.log("user is not logged in");
+    setIsUserLogged(false);
+  }
+}, [isUserLogged]);
+
+
   return (
     <div>
       <h2>Login</h2>
@@ -85,6 +114,7 @@ try {
           />
           <label htmlFor="password">password</label>
           <button type="submit">login</button>
+          <button onClick={logout}>logout</button>
         </form>
       </div>
     </div>
