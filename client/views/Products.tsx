@@ -35,11 +35,11 @@ function Products() {
       </div>
 
       <div>
-      <h2>User List</h2>
+      <h2>Users</h2>
       <ul>
         {users.map((user) => (
           <li key={user._id}>
-            <h3>{user.userName}</h3>
+            <p>User: {user.userName}</p>
             <p>Email: {user.email}</p>
             <p>User Image: {user.userImage}</p>
           </li>
