@@ -12,12 +12,23 @@ function Products() {
   const [users, setUsers] = useState([]);
 
   useEffect(() =>{
-    // Fetch the list of users from your API
+    // Fetch the list of users from API
     fetch('http://localhost:5001/api/users/all')
       .then((response) => response.json())
       .then((data) => setUsers(data.allUsers))
       .catch((error) => console.error('Error fetching users:', error));
   }, []);
+
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() =>{
+    // Fetch the list of blogs from API
+    fetch('http://localhost:5001/api/blogs/all')
+      .then((response) => response.json())
+      .then((data) => setBlogs(data.allBlogs))
+      .catch((error) => console.error('Error fetching blog:', error));
+  }, []);
+
   
 
   return (
@@ -41,7 +52,22 @@ function Products() {
           <li key={user._id}>
             <p>User: {user.userName}</p>
             <p>Email: {user.email}</p>
-            <p>User Image: {user.userImage}</p>
+            {/* Display the user's image */}
+            {user.userImage && <img src={user.userImage} alt={user.userName} />}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2>Blog</h2>
+      <ul>
+        {blogs.map((blog) => (
+          <li key={blog._id}>
+            <p>Description: {blog.description}</p>
+            <p>User: {blog.userName}</p>
+            <p>Email: {blog.email}</p>
+            {blog.userImage && <img src={blog.userImage} alt={blog.userName} />}
           </li>
         ))}
       </ul>
