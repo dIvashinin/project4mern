@@ -84,6 +84,32 @@ try {
 }
 };
 
+const getAllUsers = async (req, res) => {
+// console.log('req :>> ', req);
+    
+try{
+    //we make 2 requests to DB here - find and populate. We need to think about how many operations are ok for us
+        const allUsers = await userModel.find()
+        //this is if i have a fieldwhich i wanna populate. in this case i don't have it
+        // .populate("user");
+        
+        console.log('allUsers :>> ', allUsers);
+        if (allUsers.length<1) {
+            res.status(204).json({message: "no users"});
+        } else {
+            res.status(200).json({
+                number: allUsers.length,
+                allUsers,
+            });
+        }
+    } catch (error) {
+        console.log('error :>> ', error);
+        res.status (500).json({
+            error: "something went wrong in the server",
+        });
+    }
+};
+
 const login = async (req, res) => {
 // console.log("login controller");
 console.log('req.body :>> ', req.body);
@@ -143,4 +169,4 @@ if (checkPassword) {
 }
 
 }
-export {uploadImage, register, login};
+export {uploadImage, register, login, getAllUsers};
