@@ -12,7 +12,7 @@ import {
 import Login from "../views/Login";
 import Register from "../views/Register";
 import About from "../views/About";
-import Navbar from "../components/Navbar";
+import MyNavbar from "../components/Navbar";
 import Products from "../views/Products";
 import Posts from "../views/Posts";
 import ErrorPage from "../views/ErrorPage";
@@ -83,7 +83,7 @@ function App() {
 const Root = () => {
   return (
     <>
-      <Navbar />
+      <MyNavbar />
       <Outlet />
     </>
   );

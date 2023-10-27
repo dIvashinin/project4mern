@@ -13,15 +13,15 @@ function Posts() {
     setInputText(text);
   };
   
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
 
-  useEffect(() =>{
+  // useEffect(() =>{
     // Fetch the list of users from API
-    fetch('http://localhost:5001/api/users/all')
-      .then((response) => response.json())
-      .then((data) => setUsers(data.allUsers))
-      .catch((error) => console.error('Error fetching users:', error));
-  }, []);
+    // fetch('http://localhost:5001/api/users/all')
+      // .then((response) => response.json())
+      // .then((data) => setUsers(data.allUsers))
+      // .catch((error) => console.error('Error fetching users:', error));
+  // }, []);
 
   const [posts, setPosts] = useState([]);
 
