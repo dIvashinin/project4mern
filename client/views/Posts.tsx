@@ -49,6 +49,37 @@ function Posts() {
         />
       </div>
 
+      <h2>Post it</h2>
+      <div>
+        <form
+        // className="input-form" onSubmit={handleSubmitRegister}
+        >
+            <input
+              type="text"
+              name="userName"
+              id="userName"
+              placeholder="user name..."
+              // onChange={handleRegisterInput}
+            />
+            <label htmlFor="userName">user name</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="email..."
+              // onChange={handleRegisterInput}
+            />
+            <label htmlFor="email">email</label>
+           
+          <input type="file" name="file" id="file" 
+          // onChange={handleFileInput} 
+          />
+          <button type="submit" 
+          // onSubmit={handleRegisterSubmit}
+          >post it</button>
+        </form>
+      </div>
+
       {/* <div>
       <h2>Users</h2>
       <ul>
