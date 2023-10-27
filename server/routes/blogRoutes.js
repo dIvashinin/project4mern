@@ -1,5 +1,5 @@
 import express from "express";
-import {register, uploadImage, getAllBlogs, register2, uploadImage2 } from "../controller/blogController.js";
+import { getAllBlogs, register2, uploadImage2 } from "../controller/blogController.js";
 
 import multerUpload from "../middlewares/multer.js";
 const router = express.Router();

@@ -45,24 +45,24 @@ function Products() {
         />
       </div>
 
-      <div>
+      {/* <div>
       <h2>Users</h2>
       <ul>
         {users.map((user) => (
           <li key={user._id}>
             <p>User: {user.userName}</p>
-            <p>Email: {user.email}</p>
+            <p>Email: {user.email}</p> */}
             {/* Display the user's image */}
-            {user.userImage && <img src={user.userImage} alt={user.userName} />}
+            {/* {user.userImage && <img src={user.userImage} alt={user.userName} />}
           </li>
         ))}
       </ul>
-    </div>
+    </div> */}
 
     <div>
       <h2>Blog</h2>
       <ul>
-        {blogs.map((blog) => (
+        {blogs && blogs.map((blog) => (
           <li key={blog._id}>
             <p>Description: {blog.description}</p>
             <p>User: {blog.userName}</p>

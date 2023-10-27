@@ -6,6 +6,7 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import productRoutes from "./routes/productRoutes.js";
 import router from "./routes/testRoute.js";
+import blogRoutes from "./routes/blogRoutes.js";
 import brandRoutes from "./routes/brandRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import cloudinaryConfig from "./config/cloudinaryConfig.js";
@@ -28,6 +29,7 @@ const addMiddlewares = () => {
 const addRoutes = () => {
     app.use("/api", router);
     app.use("/api/products", productRoutes);
+    app.use("/api/blogs", blogRoutes);
     app.use("/api/brands", brandRoutes);
     app.use("/api/users", userRoutes);
     
