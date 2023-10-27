@@ -69,7 +69,7 @@ function App() {
 
       <RouterProvider router={router} />
       <Outlet />
-      <h1>Store</h1>
+      {/* <h1>Store</h1> */}
       {/* <button onClick={logout}>logout</button> */}
       <hr />
       {/* <Register/> */}

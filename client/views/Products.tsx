@@ -33,7 +33,7 @@ function Products() {
 
   return (
     <div>
-      <h2>Products</h2>
+      {/* <h2>Products</h2> */}
 
       <div className="searchbar">
         <input
@@ -61,13 +61,13 @@ function Products() {
 
     <div>
       <h2>Blog</h2>
-      <ul>
+      <ul className="blog-list">
         {blogs && blogs.map((blog) => (
-          <li key={blog._id}>
+          <li key={blog._id} className="blog-list-item">
             <p>Description: {blog.description}</p>
             <p>User: {blog.userName}</p>
             <p>Email: {blog.email}</p>
-            {blog.userImage && <img src={blog.userImage} alt={blog.userName} />}
+            {blog.userImage && <img src={blog.userImage} alt={blog.userName} className="blog-image" />}
           </li>
         ))}
       </ul>

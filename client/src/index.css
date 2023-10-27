@@ -55,6 +55,28 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.blog-list {
+  list-style: none; /* Remove default list bullets */
+  padding: 0; /* Remove default list padding */
+}
+
+.blog-list-item {
+  border: 1px solid #ccc; /* Add a border around each blog item */
+  padding: 10px; /* Add padding to separate items */
+  margin: 10px 0; /* Add margin to space out items */
+}
+
+.blog-image {
+  max-width: 400px; /* Set the maximum width of the image */
+  height: auto; /* Automatically adjust the height to maintain the aspect ratio */
+  border: 2px solid #ccc; /* Add a border to the image */
+  border-radius: 6px; /* Apply a rounded border */
+}
+
+
+
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
