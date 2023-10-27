@@ -12,6 +12,8 @@ function Posts() {
     const text = event.target.value;
     setInputText(text);
   };
+
+  // const [selectedFile, setSelectedFile] = useState<File | String>("");
   
   // const [users, setUsers] = useState([]);
 
@@ -49,10 +51,11 @@ function Posts() {
         />
       </div>
 
-      <h2>Post it</h2>
+      <h2>Hey you! Don't go away! Post it!</h2>
       <div>
         <form
-        // className="input-form" onSubmit={handleSubmitRegister}
+        className="input-form" 
+        // onSubmit={handleSubmitRegister}
         >
             <input
               type="text"

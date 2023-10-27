@@ -43,12 +43,15 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  /* background-color: #1a1a1a; */
   cursor: pointer;
+  background-color: #ffa500;
   transition: border-color 0.25s;
 }
 button:hover {
   border-color: #646cff;
+  background-color: #a86d00;
+  transition: 0.4s;
 }
 button:focus,
 button:focus-visible {
@@ -60,7 +63,7 @@ button:focus-visible {
   padding: 0; /* Remove default list padding */
 }
 
-.blog-list-item {
+.blog-list-item, .input-form {
   border: 1px solid #ccc; /* Add a border around each blog item */
   padding: 10px; /* Add padding to separate items */
   margin: 10px 0; /* Add margin to space out items */
@@ -74,7 +77,33 @@ button:focus-visible {
   border-radius: 6px; /* Apply a rounded border */
 }
 
+/* navbar.css */
+.navbar {
+  background-color: #333; /* Background color */
+  color: #fff; /* Text color */
+  padding: 15px;
+  margin-top: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  
 
+}
+
+.about, .posts, .register, .login { 
+color: hsl(0, 0%, 100%); /* Link color */
+font-size: 20px;
+text-decoration: none; /* Remove underline from links */
+margin: 0 10px; /* Add spacing between links */
+transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+.about:hover, .posts:hover, .register:hover, .login:hover{
+  color: #ffa500; /* Change link color on hover */
+}
+.about:active, .posts:active, .register:active, .login:active {
+  color: hsl(120, 100%, 50%); /* Change color when clicked */
+}
 
 
 
@@ -87,6 +116,6 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
   }
 }

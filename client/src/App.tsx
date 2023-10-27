@@ -66,7 +66,7 @@ function App() {
 
   return (
     <>
-      <hr />
+      {/* <hr /> */}
 
       <RouterProvider router={router} />
       <Outlet />
@@ -74,9 +74,9 @@ function App() {
       {/* <button onClick={logout}>logout</button> */}
       <hr />
       {/* <Register/> */}
-      <hr />
+      {/* <hr /> */}
       {/* <Login/> */}
-      <hr />
+      {/* <hr /> */}
     </>
   );
 }
