@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 
-function Products() {
+function Posts() {
   const [inputText, setInputText] = useState("");
 
   const inputChangeHandler = (event) => {
@@ -23,14 +23,14 @@ function Products() {
       .catch((error) => console.error('Error fetching users:', error));
   }, []);
 
-  const [blogs, setBlogs] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() =>{
     // Fetch the list of blogs from API
-    fetch('http://localhost:5001/api/blogs/all')
+    fetch('http://localhost:5001/api/posts/all')
       .then((response) => response.json())
-      .then((data) => setBlogs(data.allBlogs))
-      .catch((error) => console.error('Error fetching blog:', error));
+      .then((data) => setPosts(data.allPosts))
+      .catch((error) => console.error('Error fetching posts:', error));
   }, []);
 
   
@@ -81,12 +81,12 @@ function Products() {
     {/* <div> */}
       <h2>Blog</h2>
       <ul className="blog-list">
-        {blogs && blogs.map((blog) => (
-          <li key={blog._id} className="blog-list-item">
-            <p>Description: {blog.description}</p>
-            <p>User: {blog.userName}</p>
-            <p>Email: {blog.email}</p>
-            {blog.userImage && <Image src={blog.userImage} alt={blog.userName} className="blog-image" />}
+        {posts && posts.map((post) => (
+          <li key={post._id} className="blog-list-item">
+            <p>Description: {post.description}</p>
+            <p>User: {post.userName}</p>
+            <p>Email: {post.email}</p>
+            {post.userImage && <Image src={post.userImage} alt={post.userName} className="blog-image" />}
           </li>
         ))}
       </ul>
@@ -98,4 +98,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default Posts;

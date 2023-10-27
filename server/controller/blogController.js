@@ -25,22 +25,22 @@ const uploadImage2 = async (req, res) => {
     };
     // };
 
-    const getAllBlogs = async (req, res) => {
+    const getAllPosts = async (req, res) => {
         // console.log('req :>> ', req);
             
         try{
             //we make 2 requests to DB here - find and populate. We need to think about how many operations are ok for us
-                const allBlogs = await blogModel.find()
+                const allPosts = await blogModel.find()
                 //this is if i have a fieldwhich i wanna populate. in this case i don't have it
                 // .populate("user");
                 
-                console.log('allBlogs :>> ', allBlogs);
-                if (allBlogs.length<1) {
+                console.log('allPosts :>> ', allPosts);
+                if (allPosts.length<1) {
                     res.status(204).json({message: "no blogs"});
                 } else {
                     res.status(200).json({
-                        number: allBlogs.length,
-                        allBlogs,
+                        number: allPosts.length,
+                        allPosts,
                     });
                 }
             } catch (error) {
@@ -82,4 +82,4 @@ const uploadImage2 = async (req, res) => {
 
             }
 
-export {uploadImage2, register2, getAllBlogs};
+export {uploadImage2, register2, getAllPosts};

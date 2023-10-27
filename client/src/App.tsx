@@ -14,6 +14,7 @@ import Register from "../views/Register";
 import About from "../views/About";
 import Navbar from "../components/Navbar";
 import Products from "../views/Products";
+import Posts from "../views/Posts";
 import ErrorPage from "../views/ErrorPage";
 import Details from "../views/Details";
 
@@ -25,8 +26,8 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         {/* <Route index element = {<Home/>} /> */}
-        <Route path="products" element={<Products />} />
-        <Route path="products/:details" element={<Details />} />
+        <Route path="posts" element={<Posts />} />
+        <Route path="posts/:details" element={<Details />} />
         <Route path="about" element={<About />} />
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />

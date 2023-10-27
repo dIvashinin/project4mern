@@ -67,7 +67,8 @@ button:focus-visible {
 }
 
 .blog-image {
-  max-width: 400px; /* Set the maximum width of the image */
+  max-width: 400px; 
+  /* Set the maximum width of the image */
   height: auto; /* Automatically adjust the height to maintain the aspect ratio */
   border: 2px solid #ccc; /* Add a border to the image */
   border-radius: 6px; /* Apply a rounded border */

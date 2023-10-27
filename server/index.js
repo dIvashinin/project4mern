@@ -29,7 +29,7 @@ const addMiddlewares = () => {
 const addRoutes = () => {
     app.use("/api", router);
     app.use("/api/products", productRoutes);
-    app.use("/api/blogs", blogRoutes);
+    app.use("/api/posts", blogRoutes);
     app.use("/api/brands", brandRoutes);
     app.use("/api/users", userRoutes);
     
