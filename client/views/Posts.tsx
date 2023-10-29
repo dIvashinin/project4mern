@@ -14,28 +14,26 @@ function Posts() {
   };
 
   // const [selectedFile, setSelectedFile] = useState<File | String>("");
-  
+
   // const [users, setUsers] = useState([]);
 
   // useEffect(() =>{
-    // Fetch the list of users from API
-    // fetch('http://localhost:5001/api/users/all')
-      // .then((response) => response.json())
-      // .then((data) => setUsers(data.allUsers))
-      // .catch((error) => console.error('Error fetching users:', error));
+  // Fetch the list of users from API
+  // fetch('http://localhost:5001/api/users/all')
+  // .then((response) => response.json())
+  // .then((data) => setUsers(data.allUsers))
+  // .catch((error) => console.error('Error fetching users:', error));
   // }, []);
 
   const [posts, setPosts] = useState([]);
 
-  useEffect(() =>{
+  useEffect(() => {
     // Fetch the list of blogs from API
-    fetch('http://localhost:5001/api/posts/all')
+    fetch("http://localhost:5001/api/posts/all")
       .then((response) => response.json())
       .then((data) => setPosts(data.allPosts))
-      .catch((error) => console.error('Error fetching posts:', error));
+      .catch((error) => console.error("Error fetching posts:", error));
   }, []);
-
-  
 
   return (
     <div>
@@ -54,32 +52,38 @@ function Posts() {
       <h2>Hey you! Don't go away! Post it!</h2>
       <div>
         <form
-        className="input-form" 
-        // onSubmit={handleSubmitRegister}
+          className="input-form"
+          // onSubmit={handleSubmitRegister}
         >
-            <input
-              type="text"
-              name="userName"
-              id="userName"
-              placeholder="user name..."
-              // onChange={handleRegisterInput}
-            />
-            <label htmlFor="userName">user name</label>
-            <input
-              type="text"
-              name="email"
-              id="email"
-              placeholder="email..."
-              // onChange={handleRegisterInput}
-            />
-            <label htmlFor="email">email</label>
-           
-          <input type="file" name="file" id="file" 
-          // onChange={handleFileInput} 
+          <input
+            type="text"
+            name="userName"
+            id="userName"
+            placeholder="user name..."
+            // onChange={handleRegisterInput}
           />
-          <button type="submit" 
-          // onSubmit={handleRegisterSubmit}
-          >post it</button>
+          <label htmlFor="userName">user name</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="email..."
+            // onChange={handleRegisterInput}
+          />
+          <label htmlFor="email">email</label>
+
+          <input
+            type="file"
+            name="file"
+            id="file"
+            // onChange={handleFileInput}
+          />
+          <button
+            type="submit"
+            // onSubmit={handleRegisterSubmit}
+          >
+            post it
+          </button>
         </form>
       </div>
 
@@ -90,18 +94,18 @@ function Posts() {
           <li key={user._id}>
             <p>User: {user.userName}</p>
             <p>Email: {user.email}</p> */}
-            {/* Display the user's image */}
-            {/* {user.userImage && <img src={user.userImage} alt={user.userName} />}
+      {/* Display the user's image */}
+      {/* {user.userImage && <img src={user.userImage} alt={user.userName} />}
           </li>
         ))}
       </ul>
     </div> */}
 
-<div>
-{/* <Container fluid>
+      <div>
+        {/* <Container fluid>
 <Row>
 <Col xs={12} sm={6} md={4} lg={3} xl={3} className="card-inside"> */}
-{/* <Link to={`${blogs._id}`}> */}
+        {/* <Link to={`${blogs._id}`}> */}
         {/* <Image  */}
         {/* //   className="image-responsive" */}
         {/* //   src={blogs.userImage} */}
@@ -109,28 +113,38 @@ function Posts() {
         {/* //   style={{ width: "220px", height: "270px" }} */}
         {/* /> */}
         {/* <div className="hover-text"> */}
-          {/* Additional text to display on hover */}
-          {/* <p>click for details</p> */}
+        {/* Additional text to display on hover */}
+        {/* <p>click for details</p> */}
         {/* </div> */}
-      {/* </Link> */}
-    {/* <div> */}
-      <h2>Blog</h2>
-      <ul className="blog-list">
-        {posts && posts.map((post) => (
-          <li key={post._id} className="blog-list-item">
-            <div className="heart-icon"></div> {/* Add a div for the heart symbol */}
-            {post.userImage && <Image src={post.userImage} alt={post.userName} className="blog-image" />}
-            <p>Description: {post.description}</p>
-            <p>User: {post.userName}</p>
-            <p>Email: {post.email}</p>
-          </li>
-        ))}
-      </ul>
-    {/* </div> */}
-    {/* </Col>
+        {/* </Link> */}
+        {/* <div> */}
+        <h2>Blog</h2>
+        <ul className="blog-list">
+          {posts &&
+            posts.map((post) => (
+              <li key={post._id} className="blog-list-item">
+                <div className="heart-icon"></div>{" "}
+                {/* Add a div for the heart symbol */}
+                {post.userImage && (
+                  <Image
+                    src={post.userImage}
+                    alt={post.userName}
+                    className="blog-image"
+                  />
+                )}
+                <div className="description-post">
+                  <p>Description: {post.description}</p>
+                  <p>User: {post.userName}</p>
+                  <p>Email: {post.email}</p>
+                </div>
+              </li>
+            ))}
+        </ul>
+        {/* </div> */}
+        {/* </Col>
     </Row>
     </Container> */}
-    </div>
+      </div>
     </div>
   );
 }
