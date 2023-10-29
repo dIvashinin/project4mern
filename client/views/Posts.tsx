@@ -118,10 +118,11 @@ function Posts() {
       <ul className="blog-list">
         {posts && posts.map((post) => (
           <li key={post._id} className="blog-list-item">
+            <div className="heart-icon"></div> {/* Add a div for the heart symbol */}
+            {post.userImage && <Image src={post.userImage} alt={post.userName} className="blog-image" />}
             <p>Description: {post.description}</p>
             <p>User: {post.userName}</p>
             <p>Email: {post.email}</p>
-            {post.userImage && <Image src={post.userImage} alt={post.userName} className="blog-image" />}
           </li>
         ))}
       </ul>

@@ -66,11 +66,18 @@ button:focus-visible {
   flex-wrap: wrap;
 }
 
-
-.blog-list-item, .input-form {
+.input-form {
+  
   border: 1px solid #ccc; /* Add a border around each blog item */
-  padding: 10px; /* Add padding to separate items */
-  margin: 10px 0; /* Add margin to space out items */
+  padding-right: 3px; /* Add padding to separate items */
+  margin: 2px 0; /* Add margin to space out items */
+  flex: 0 0 100%; /* By default, each item takes 100% width for small screens */
+}
+.blog-list-item{
+  position: relative; /* to make it a relative container for absolute positioning */
+  border: 1px solid #ccc; /* Add a border around each blog item */
+  padding-right: 3px; /* Add padding to separate items */
+  margin: 2px 0; /* Add margin to space out items */
   flex: 0 0 100%; /* By default, each item takes 100% width for small screens */
 
 @media (min-width: 768px) {
@@ -95,6 +102,19 @@ button:focus-visible {
   &.medium {
     max-width: 300px;
   }
+}
+
+.heart-icon {
+  width: 20px; /* Adjust the size of the heart icon */
+  height: 20px; /* Adjust the size of the heart icon */
+  background: url('https://res.cloudinary.com/dzghua4dz/image/upload/f_auto,q_auto/v1/project4mern/mneozk93coytdfqx2tf4') center/cover no-repeat; /* Use a heart icon image */
+  background-color: #e8e0d3;
+  padding: 3px;
+  position: absolute; /* Position it absolutely within the .blog-list-item */
+  top: 10px; /* Adjust the vertical position */
+  right: 10px; /* Adjust the horizontal position */
+  z-index: 1; /* Ensure the heart icon is above the image */
+  opacity: 80%;
 }
 
 /* navbar.css */
