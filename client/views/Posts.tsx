@@ -97,9 +97,10 @@ function Posts() {
       </ul>
     </div> */}
 
-<Container fluid>
+<div>
+{/* <Container fluid>
 <Row>
-<Col xs={12} sm={6} md={4} lg={3} xl={3} className="card-inside">
+<Col xs={12} sm={6} md={4} lg={3} xl={3} className="card-inside"> */}
 {/* <Link to={`${blogs._id}`}> */}
         {/* <Image  */}
         {/* //   className="image-responsive" */}
@@ -125,9 +126,10 @@ function Posts() {
         ))}
       </ul>
     {/* </div> */}
-    </Col>
+    {/* </Col>
     </Row>
-    </Container>
+    </Container> */}
+    </div>
     </div>
   );
 }

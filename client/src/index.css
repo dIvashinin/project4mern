@@ -62,20 +62,39 @@ button:focus-visible {
 .blog-list {
   list-style: none; /* Remove default list bullets */
   padding: 0; /* Remove default list padding */
+  display: flex;
+  flex-wrap: wrap;
 }
+
 
 .blog-list-item, .input-form {
   border: 1px solid #ccc; /* Add a border around each blog item */
   padding: 10px; /* Add padding to separate items */
   margin: 10px 0; /* Add margin to space out items */
+  flex: 0 0 100%; /* By default, each item takes 100% width for small screens */
+
+@media (min-width: 768px) {
+  flex: 0 0 30%; /* For screens 768px or larger, each item takes 50% width */
 }
 
+@media (min-width: 1132px) {
+  flex: 0 0 25%; /* For screens 992px or larger, each item takes 33.33% width */
+}
+}
 .blog-image {
-  max-width: 400px; 
+  max-width: 100%; 
   /* Set the maximum width of the image */
   height: auto; /* Automatically adjust the height to maintain the aspect ratio */
   border: 2px solid #ccc; /* Add a border to the image */
   border-radius: 6px; /* Apply a rounded border */
+
+  &.large {
+    max-width: 400px;
+  }
+
+  &.medium {
+    max-width: 300px;
+  }
 }
 
 /* navbar.css */
