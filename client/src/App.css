@@ -21,10 +21,18 @@
   margin-top: 60px;
 }
 
+#mySearchInput{
+  margin-top: 10px;
+  width: 200px;
+  height: 20px;
+}
+
 .input-form{
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 400px;
+  margin: 0 auto; /* Center the form horizontally */
+  padding: 10px;
 }
 
 @keyframes logo-spin {
@@ -48,4 +56,9 @@
 
 .read-the-docs {
   color: #888;
+}
+@media (max-width: 768px) {
+  .input-form {
+    width: 60%; /* Adjust the width for smaller screens */
+  }
 }
