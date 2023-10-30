@@ -6,26 +6,43 @@ import Image from "react-bootstrap/Image";
 
 function Posts() {
   const [inputText, setInputText] = useState("");
-
+//search
   const inputChangeHandler = (event) => {
     console.log("event.target.value :>> ", event.target.value);
     const text = event.target.value;
     setInputText(text);
   };
+//we form data, it's empty. that's a built-in object
+  const [formData, setFormData] = useState({
+    description: '',
+    userName: '',
+    email: '',
+    userImage: null,
+  });
 
-  const [selectedFile, setSelectedFile] = useState<File | String>("");
+  //here goes our handler of post
+  const handlePostSubmit = async (e) => {
+    e.preventDefault();
 
+    const form = new FormData();
+    form.append('description',formData.description);
+    form.append('userName',formData.userName);
+    form.append('email',formData.email);
+    form.append('userImage',formData.userImage);
 
+    try {
+      const response = await fetch ('/api/posts', {
+        method: 'POST',
+        body: form,
+      });
 
-  // const [users, setUsers] = useState([]);
+    } catch (error) {
+      console.log('error :>> ', error);
+    }
+  };
 
-  // useEffect(() =>{
-  // Fetch the list of users from API
-  // fetch('http://localhost:5001/api/users/all')
-  // .then((response) => response.json())
-  // .then((data) => setUsers(data.allUsers))
-  // .catch((error) => console.error('Error fetching users:', error));
-  // }, []);
+  // const [selectedFile, setSelectedFile] = useState<File | String>("");
+
 
   const [posts, setPosts] = useState([]);
 
@@ -37,9 +54,11 @@ function Posts() {
       .catch((error) => console.error("Error fetching posts:", error));
   }, []);
 
+  const handleImageChange = (e) => {
+    setFormData({ ...formData, userImage: e.target.files[0] });
+  };
   return (
     <div>
-      {/* <h2>Products</h2> */}
 
       <div className="searchbar">
         <input
@@ -55,22 +74,18 @@ function Posts() {
       <div>
         <form
           className="input-form"
-          // onSubmit={handleSubmitPost}
+          onSubmit={handlePostSubmit}
         >
-          <input
-            type="text"
-            name="description"
-            id="description"
-            placeholder="description..."
-            // onChange={handlePostInput}
+          <textarea name="description" placeholder="description..." value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           />
           <label htmlFor="description">description</label>
           <input
             type="text"
             name="userName"
+            value= {formData.userName}
             id="userName"
             placeholder="user name..."
-            // onChange={handlePostInput}
+            onChange={(e) => setFormData({ ...formData, userName: e.target.value })}
           />
           <label htmlFor="userName">user name</label>
           <input
@@ -78,15 +93,15 @@ function Posts() {
             name="email"
             id="email"
             placeholder="email..."
-            // onChange={handlePostInput}
+            value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           />
           <label htmlFor="email">email</label>
 
           <input
             type="file"
-            name="file"
+            name="userImage"
             id="file"
-            // onChange={handleFileInput}
+            onChange={handleImageChange}
           />
           <button
             type="submit"
@@ -97,37 +112,8 @@ function Posts() {
         </form>
       </div>
 
-      {/* <div>
-      <h2>Users</h2>
-      <ul>
-        {users.map((user) => (
-          <li key={user._id}>
-            <p>User: {user.userName}</p>
-            <p>Email: {user.email}</p> */}
-      {/* Display the user's image */}
-      {/* {user.userImage && <img src={user.userImage} alt={user.userName} />}
-          </li>
-        ))}
-      </ul>
-    </div> */}
-
       <div>
-        {/* <Container fluid>
-<Row>
-<Col xs={12} sm={6} md={4} lg={3} xl={3} className="card-inside"> */}
-        {/* <Link to={`${blogs._id}`}> */}
-        {/* <Image  */}
-        {/* //   className="image-responsive" */}
-        {/* //   src={blogs.userImage} */}
-        {/* //   alt="Avatar" */}
-        {/* //   style={{ width: "220px", height: "270px" }} */}
-        {/* /> */}
-        {/* <div className="hover-text"> */}
-        {/* Additional text to display on hover */}
-        {/* <p>click for details</p> */}
-        {/* </div> */}
-        {/* </Link> */}
-        {/* <div> */}
+        
         <h2>Blog</h2>
         <ul className="blog-list">
           {posts &&
@@ -150,10 +136,7 @@ function Posts() {
               </li>
             ))}
         </ul>
-        {/* </div> */}
-        {/* </Col>
-    </Row>
-    </Container> */}
+       
       </div>
     </div>
   );
