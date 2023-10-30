@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+// import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 
 function Posts() {
@@ -13,7 +13,9 @@ function Posts() {
     setInputText(text);
   };
 
-  // const [selectedFile, setSelectedFile] = useState<File | String>("");
+  const [selectedFile, setSelectedFile] = useState<File | String>("");
+
+
 
   // const [users, setUsers] = useState([]);
 
@@ -53,14 +55,22 @@ function Posts() {
       <div>
         <form
           className="input-form"
-          // onSubmit={handleSubmitRegister}
+          // onSubmit={handleSubmitPost}
         >
+          <input
+            type="text"
+            name="description"
+            id="description"
+            placeholder="description..."
+            // onChange={handlePostInput}
+          />
+          <label htmlFor="description">description</label>
           <input
             type="text"
             name="userName"
             id="userName"
             placeholder="user name..."
-            // onChange={handleRegisterInput}
+            // onChange={handlePostInput}
           />
           <label htmlFor="userName">user name</label>
           <input
@@ -68,7 +78,7 @@ function Posts() {
             name="email"
             id="email"
             placeholder="email..."
-            // onChange={handleRegisterInput}
+            // onChange={handlePostInput}
           />
           <label htmlFor="email">email</label>
 
@@ -80,7 +90,7 @@ function Posts() {
           />
           <button
             type="submit"
-            // onSubmit={handleRegisterSubmit}
+            // onSubmit={handlePostSubmit}
           >
             post it
           </button>
