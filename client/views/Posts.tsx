@@ -31,7 +31,7 @@ function Posts() {
     form.append('userImage',formData.userImage);
 
     try {
-      const response = await fetch ('/api/posts', {
+      const response = await fetch ('/api/createBlogPost', {
         method: 'POST',
         body: form,
       });
