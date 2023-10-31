@@ -35,7 +35,7 @@ function Posts() {
     formdata.append('description',formData.description);
     formdata.append('userName',formData.userName);
     formdata.append('email',formData.email);
-    formdata.append('userImage',selectedFile); // we use it
+    formdata.append('userImage',selectedFile as File); // we use it
 
     try {
       // Send a POST request to create a new blog post with the provided data
@@ -44,6 +44,9 @@ function Posts() {
         body: formdata,
       });
 // Handle the response here
+//attach the url received in the response to the formData variable , e.g.: setFormData({...formData, userImage:result.image})
+// do another fetch request to an endpoint sending the formData , now with all the information already available
+
     } catch (error) {
       console.log('error :>> ', error);
     }
