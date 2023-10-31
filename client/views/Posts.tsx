@@ -29,7 +29,7 @@ function Posts() {
   // Function to handle the form submission (creating a new blog post)
   const handlePostSubmit = async (e) => {
     e.preventDefault();
-    console.log('e ', e.target.value);
+    // console.log('e ', e.target.value);
 // Create a new FormData object to send the form data (description, user name, email, and selected file)
     const formdata = new FormData();
     formdata.append('description',formData.description);
@@ -44,15 +44,18 @@ function Posts() {
         body: formdata,
       });
 // Handle the response here
+const result = await response.json();
 //attach the url received in the response to the formData variable , e.g.: setFormData({...formData, userImage:result.image})
 // do another fetch request to an endpoint sending the formData , now with all the information already available
+const updatedPostsResponse = await fetch ('http://localhost:5001/api/posts/all');
+const updatedPostsData = await updatedPostsResponse.json();
+// Update local state with the updated data
+    setPosts(updatedPostsData.allPosts);
 
     } catch (error) {
       console.log('error :>> ', error);
     }
   };
-
-  // const [selectedFile, setSelectedFile] = useState<File | String>("");
 
 // State to store the list of blog posts
   const [posts, setPosts] = useState([]);
