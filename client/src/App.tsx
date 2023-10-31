@@ -17,6 +17,8 @@ import Products from "../views/Products";
 import Posts from "../views/Posts";
 import ErrorPage from "../views/ErrorPage";
 import Details from "../views/Details";
+import Home from "../views/Home";
+
 
 // import './App.css';
 
@@ -25,7 +27,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-        {/* <Route index element = {<Home/>} /> */}
+        <Route index element = {<Home/>} />
         <Route path="posts" element={<Posts />} />
         <Route path="posts/:details" element={<Details />} />
         <Route path="about" element={<About />} />
