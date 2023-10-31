@@ -32,6 +32,11 @@
   padding: 10px;
 }
 
+.eingang-picture {
+  max-width: 100%; /* Ensures the image doesn't exceed its container's width */
+  height: auto; /* Allows the image to maintain its aspect ratio */
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

@@ -93,7 +93,7 @@ const updatedPostsData = await updatedPostsResponse.json();
           className="input-form"
           onSubmit={handlePostSubmit}
         >
-          <textarea name="description" placeholder="description..." value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+          <textarea name="description" placeholder="tell us about it..." value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           />
           <label htmlFor="description">description</label>
           <input
@@ -101,7 +101,7 @@ const updatedPostsData = await updatedPostsResponse.json();
             name="userName"
             value= {formData.userName}
             id="userName"
-            placeholder="user name..."
+            placeholder="your user name..."
             onChange={(e) => setFormData({ ...formData, userName: e.target.value })}
           />
           <label htmlFor="userName">user name</label>
@@ -109,10 +109,19 @@ const updatedPostsData = await updatedPostsResponse.json();
             type="text"
             name="email"
             id="email"
-            placeholder="email..."
+            placeholder="your email..."
             value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           />
           <label htmlFor="email">email</label>
+
+          <input
+            type="text"
+            name="brand"
+            id="brand"
+            placeholder="what has been drunk?!"
+            value={formData.brand} onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
+          />
+          <label htmlFor="brand">brand</label>
 
           <input
             type="file"
