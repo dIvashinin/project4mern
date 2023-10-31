@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 // import Container from "react-bootstrap/Container";
 // import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
@@ -17,23 +17,25 @@ function Posts() {
     description: '',
     userName: '',
     email: '',
-    userImage: null,
+    // userImage: '',
   });
 
+  const [selectedFile, setSelectedFile] = useState<File | String>(""); // state to track the selected file
+
   //here goes our handler of post
-  const handlePostSubmit = async (e) => {
+  const handlePostSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const form = new FormData();
-    form.append('description',formData.description);
-    form.append('userName',formData.userName);
-    form.append('email',formData.email);
-    form.append('userImage',formData.userImage);
+    const formdata = new FormData();
+    formdata.append('description',formData.description);
+    formdata.append('userName',formData.userName);
+    formdata.append('email',formData.email);
+    formdata.append('userImage',selectedFile); // we use it
 
     try {
-      const response = await fetch ('/api/createBlogPost', {
+      const response = await fetch ('http://localhost:5001/api/posts/createBlogPost', {
         method: 'POST',
-        body: form,
+        body: formdata,
       });
 
     } catch (error) {
@@ -55,7 +57,8 @@ function Posts() {
   }, []);
 
   const handleImageChange = (e) => {
-    setFormData({ ...formData, userImage: e.target.files[0] });
+    // setFormData({ ...formData, userImage: e.target.files[0] });
+    setSelectedFile(e.target.files[0]); //we update the selectedFile state
   };
   return (
     <div>
@@ -105,7 +108,7 @@ function Posts() {
           />
           <button
             type="submit"
-            // onSubmit={handlePostSubmit}
+            onSubmit={handlePostSubmit}
           >
             post it
           </button>

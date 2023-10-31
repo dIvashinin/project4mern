@@ -2,9 +2,9 @@ import {v2 as cloudinary} from 'cloudinary';
 import blogModel from '../models/blogModel.js';
 
 const uploadImage2 = async (req, res) => {
-    console.log("upload image controller working");
-    console.log('req :>> ', req);
-    console.log('req.file :>> ', req.file);
+    // console.log("upload image controller working");
+    // console.log('req :>> ', req);
+    // console.log('req.file :>> ', req.file);
     
     if (req.file) {
         // if there's a field called "file" in the request, we try to upload file to cloudinary
