@@ -10,7 +10,7 @@ function Posts() {
 // Function to handle changes in the search input
   const inputChangeHandler = (e) => {
     // When the user types in the search input, this function updates the 'inputText' state with the text.
-    // console.log("event.target.value :>> ", e.target.value);
+    console.log("event.target.value :>> ", e.target.value);
     const text = e.target.value;
     setInputText(text);
   };
@@ -27,7 +27,7 @@ function Posts() {
 
   //here goes our handler of post
   // Function to handle the form submission (creating a new blog post)
-  const handlePostSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handlePostSubmit = async (e) => {
     e.preventDefault();
     console.log('e ', e.target.value);
 // Create a new FormData object to send the form data (description, user name, email, and selected file)

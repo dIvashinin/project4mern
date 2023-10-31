@@ -31,6 +31,7 @@ const uploadImage2 = async (req, res) => {
       });
       console.log('newBlogPost :>> ', newBlogPost);
       const savedBlog = await newBlogPost.save()
+      //after doing that, send a response to the client, confirming that the  upload has been sucessful, and maybe including the object the new blog.
       res.status(201).json({
         msg: "new blogpost created!",
         blog: {
@@ -47,7 +48,6 @@ const uploadImage2 = async (req, res) => {
         });
       }
       
-      //after doing that, send a response to the client, confirming that the  upload has been sucessful, and maybe including the object the new blog.
 
     } catch (error) {
       console.log("error :>> ", error);
