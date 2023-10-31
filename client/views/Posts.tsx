@@ -1,31 +1,36 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
 // import Container from "react-bootstrap/Container";
 // import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 
 function Posts() {
+  // State to track user input
   const [inputText, setInputText] = useState("");
-//search
-  const inputChangeHandler = (event) => {
-    console.log("event.target.value :>> ", event.target.value);
-    const text = event.target.value;
+// Function to handle changes in the search input
+  const inputChangeHandler = (e) => {
+    // When the user types in the search input, this function updates the 'inputText' state with the text.
+    // console.log("event.target.value :>> ", e.target.value);
+    const text = e.target.value;
     setInputText(text);
   };
 //we form data, it's empty. that's a built-in object
+// State to hold form data (description, user name, email, and selected file)
   const [formData, setFormData] = useState({
     description: '',
     userName: '',
     email: '',
     // userImage: '',
   });
-
-  const [selectedFile, setSelectedFile] = useState<File | String>(""); // state to track the selected file
+// State to track the selected file
+  const [selectedFile, setSelectedFile] = useState<File | String>("");
 
   //here goes our handler of post
+  // Function to handle the form submission (creating a new blog post)
   const handlePostSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    console.log('e ', e.target.value);
+// Create a new FormData object to send the form data (description, user name, email, and selected file)
     const formdata = new FormData();
     formdata.append('description',formData.description);
     formdata.append('userName',formData.userName);
@@ -33,11 +38,12 @@ function Posts() {
     formdata.append('userImage',selectedFile); // we use it
 
     try {
+      // Send a POST request to create a new blog post with the provided data
       const response = await fetch ('http://localhost:5001/api/posts/createBlogPost', {
         method: 'POST',
         body: formdata,
       });
-
+// Handle the response here
     } catch (error) {
       console.log('error :>> ', error);
     }
@@ -45,9 +51,9 @@ function Posts() {
 
   // const [selectedFile, setSelectedFile] = useState<File | String>("");
 
-
+// State to store the list of blog posts
   const [posts, setPosts] = useState([]);
-
+// Fetch the list of blog posts when the component mounts
   useEffect(() => {
     // Fetch the list of blogs from API
     fetch("http://localhost:5001/api/posts/all")
@@ -56,9 +62,11 @@ function Posts() {
       .catch((error) => console.error("Error fetching posts:", error));
   }, []);
 
+// Function to handle changes in the selected file input
   const handleImageChange = (e) => {
     // setFormData({ ...formData, userImage: e.target.files[0] });
-    setSelectedFile(e.target.files[0]); //we update the selectedFile state
+    //we update the selectedFile state
+    setSelectedFile(e.target.files[0]); 
   };
   return (
     <div>
@@ -108,7 +116,7 @@ function Posts() {
           />
           <button
             type="submit"
-            onSubmit={handlePostSubmit}
+            // onSubmit={handlePostSubmit}
           >
             post it
           </button>
