@@ -13,7 +13,7 @@ import Login from "../views/Login";
 import Register from "../views/Register";
 import About from "../views/About";
 import MyNavbar from "../components/Navbar";
-import Products from "../views/Products";
+// import Products from "../views/Products";
 import Posts from "../views/Posts";
 import ErrorPage from "../views/ErrorPage";
 import Details from "../views/Details";

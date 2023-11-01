@@ -155,9 +155,10 @@ const updatedPostsData = await updatedPostsResponse.json();
                   />
                 )}
                 <div className="description-post">
-                  <p>Description: {post.description}</p>
-                  <p>User: {post.userName}</p>
-                  <p>Email: {post.email}</p>
+                  <h4>{post.description}</h4>
+                  <p>from: {post.userName}</p>
+                  <p>at: {post.email}</p>
+                  <p>brand: {post.brand}</p>
                 </div>
               </li>
             ))}

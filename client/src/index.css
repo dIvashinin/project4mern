@@ -36,7 +36,7 @@ h1 {
   line-height: 1.1;
 }
 
-p{
+p, h2, h3, h1, h4{
   padding: 0px;
   margin: 0px;
 }
@@ -77,6 +77,7 @@ button:focus-visible {
   padding-right: 3px; /* Add padding to separate items */
   margin: 2px 0; /* Add margin to space out items */
   flex: 0 0 100%; /* By default, each item takes 100% width for small screens */
+  font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 .blog-list-item{
   position: relative; /* to make it a relative container for absolute positioning */
@@ -109,8 +110,10 @@ button:focus-visible {
   }
 }
 .description-post{
-background-color: #f4e1b8;
+background-color: #0004ff;
+color: #ffffff;
 margin: 0px;
+font-size: 12px;
 }
 
 .heart-icon {
