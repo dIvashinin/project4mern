@@ -25,7 +25,7 @@ function Posts() {
   // Function to handle changes in the search input
   const inputChangeHandler = (e) => {
     // When the user types in the search input, this function updates the 'inputText' state with the text.
-    console.log("event.target.value :>> ", e.target.value);
+    // console.log("event.target.value :>> ", e.target.value);
     const text = e.target.value;
     setInputText(text);
 
@@ -91,6 +91,26 @@ function Posts() {
       .catch((error) => console.error("Error fetching posts:", error));
   }, []);
   
+  const handleBlogInput = (e) => {
+  // ChangeEvent<HTMLTextAreaElement>
+  // const handleBlogInput = (e:ChangeEvent<HTMLInputElement>) => {
+    // this one isn't working because i overwrite formdata each time:
+    // setFormData({ ...formData, description: e.target.value })
+    // setFormData({ ...formData, userName: e.target.value })
+    // setFormData({ ...formData, email: e.target.value })
+    // setFormData({ ...formData, brand: e.target.value })
+
+    const { name, value } = e.target;
+
+  // Update the specific property in the formData based on the input field's "name"
+  setFormData((prevData) => ({
+    //spreading the existing formData 
+    ...prevData,
+    [name]: value,
+  }));
+};
+
+  
 
   // Function to handle changes in the selected file input
   const handleImageChange = (e) => {
@@ -116,11 +136,12 @@ function Posts() {
         <form className="input-form" onSubmit={handlePostSubmit}>
           <textarea
             name="description"
+            onChange={handleBlogInput}
             placeholder="tell us about it..."
             value={formData.description}
-            onChange={(e) =>
-              setFormData({ ...formData, description: e.target.value })
-            }
+            // onChange={(e) =>
+              // setFormData({ ...formData, description: e.target.value })
+            // }
           />
           <label htmlFor="description">description</label>
           <input
@@ -129,9 +150,10 @@ function Posts() {
             value={formData.userName}
             id="userName"
             placeholder="your user name..."
-            onChange={(e) =>
-              setFormData({ ...formData, userName: e.target.value })
-            }
+            onChange={handleBlogInput}
+            // onChange={(e) =>
+            //   setFormData({ ...formData, userName: e.target.value })
+            // }
           />
           <label htmlFor="userName">user name</label>
           <input
@@ -140,9 +162,10 @@ function Posts() {
             id="email"
             placeholder="your email..."
             value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
+            onChange={handleBlogInput}
+            // onChange={(e) =>
+            //   setFormData({ ...formData, email: e.target.value })
+            // }
           />
           <label htmlFor="email">email</label>
 
@@ -152,9 +175,10 @@ function Posts() {
             id="brand"
             placeholder="what has been drunk?!"
             value={formData.brand}
-            onChange={(e) =>
-              setFormData({ ...formData, brand: e.target.value })
-            }
+            onChange={handleBlogInput}
+            // onChange={(e) =>
+            //   setFormData({ ...formData, brand: e.target.value })
+            // }
           />
           <label htmlFor="brand">brand</label>
 
