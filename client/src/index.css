@@ -82,6 +82,7 @@ button:focus-visible {
 .blog-list-item{
   position: relative; /* to make it a relative container for absolute positioning */
   border: 1px solid #ffaaaa; /* Add a border around each blog item */
+  /* padding-right: 2px; */
   /* padding: 2px;  */
   /* Add padding to separate items */
   /* margin: 2px 0;  */
@@ -103,7 +104,7 @@ button:focus-visible {
   max-width: 100%; 
   /* Set the maximum width of the image */
   height: auto; /* Automatically adjust the height to maintain the aspect ratio */
-  border: 1px solid #ccc; 
+  /* border: 1px solid #ccc;  */
   /* Add a border to the image */
   border-radius: 4px; /* Apply a rounded border */
   vertical-align: top;
@@ -126,16 +127,17 @@ border-radius: 4px; /* Apply a rounded border */
 }
 
 .heart-icon {
-  width: 20px; /* Adjust the size of the heart icon */
-  height: 20px; /* Adjust the size of the heart icon */
-  background: url('https://res.cloudinary.com/dzghua4dz/image/upload/f_auto,q_auto/v1/project4mern/mneozk93coytdfqx2tf4') center/cover no-repeat; /* Use a heart icon image */
+  width: 10px; /* Adjust the size of the heart icon */
+  height: 10px; /* Adjust the size of the heart icon */
+  background: url('https://res.cloudinary.com/dzghua4dz/image/upload/v1698834043/project4mern/epmegfonsab1egutezpz.png') center/cover no-repeat; /* Use a heart icon image */
   background-color: #e8e0d3;
-  padding: 3px;
+  padding: 14px;
   position: absolute; /* Position it absolutely within the .blog-list-item */
   top: 10px; /* Adjust the vertical position */
   right: 10px; /* Adjust the horizontal position */
   z-index: 1; /* Ensure the heart icon is above the image */
   opacity: 80%;
+  border-radius: 14px;
 }
 
 /* navbar.css */
