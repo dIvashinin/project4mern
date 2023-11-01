@@ -210,11 +210,13 @@ function Posts() {
                 <div className="heart-icon"></div>{" "}
                 {/* Add a div for the heart symbol */}
                 {post.blogImage && (
+                  <div className="zoom-container">
                   <Image
                     src={post.blogImage}
                     alt={post.userName}
-                    className="blog-image"
+                    className="blog-image zoom-image"
                   />
+                  </div>
                 )}
                 <div className="description-post">
                   <h4>{post.description}</h4>
