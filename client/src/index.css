@@ -81,10 +81,15 @@ button:focus-visible {
 }
 .blog-list-item{
   position: relative; /* to make it a relative container for absolute positioning */
-  border: 1px solid #ccc; /* Add a border around each blog item */
-  padding-right: 3px; /* Add padding to separate items */
-  margin: 2px 0; /* Add margin to space out items */
+  border: 1px solid #ffaaaa; /* Add a border around each blog item */
+  /* padding: 2px;  */
+  /* Add padding to separate items */
+  /* margin: 2px 0;  */
+  /* Add margin to space out items */
   flex: 0 0 100%; /* By default, each item takes 100% width for small screens */
+  border-radius: 4px; /* Apply a rounded border */
+  margin-bottom: 3px;
+  
 
 @media (min-width: 768px) {
   flex: 0 0 30%; /* For screens 768px or larger, each item takes 50% width */
@@ -98,8 +103,10 @@ button:focus-visible {
   max-width: 100%; 
   /* Set the maximum width of the image */
   height: auto; /* Automatically adjust the height to maintain the aspect ratio */
-  border: 2px solid #ccc; /* Add a border to the image */
-  border-radius: 6px; /* Apply a rounded border */
+  border: 1px solid #ccc; 
+  /* Add a border to the image */
+  border-radius: 4px; /* Apply a rounded border */
+  vertical-align: top;
 
   &.large {
     max-width: 400px;
@@ -113,7 +120,9 @@ button:focus-visible {
 background-color: #0004ff;
 color: #ffffff;
 margin: 0px;
+padding: 0;
 font-size: 12px;
+border-radius: 4px; /* Apply a rounded border */
 }
 
 .heart-icon {
