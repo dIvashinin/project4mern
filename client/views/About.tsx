@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 function About() {
   return (
     <div>
-      <h2>About</h2>
-      <h2>This is about Berlin.</h2>
+      {/* <h2>About</h2> */}
+      <h1 className="home-about-firstline">This is about Berlin.</h1>
       <h3> And it's people.</h3>
       <h2> Who drink.</h2>
       <h1> With a style.</h1>

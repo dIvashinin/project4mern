@@ -113,10 +113,10 @@ function Posts() {
   
 
   // Function to handle changes in the selected file input
-  const handleImageChange = (e) => {
+  const handleImageChange = (e:ChangeEvent<HTMLInputElement>) => {
     // setFormData({ ...formData, userImage: e.target.files[0] });
     //we update the selectedFile state
-    setSelectedFile(e.target.files[0]);
+    setSelectedFile(e.target.files![0]);
   };
   return (
     <div>
@@ -187,6 +187,7 @@ function Posts() {
             name="blogImage"
             id="file"
             onChange={handleImageChange}
+          // onChange={(e) =>}
           />
           <button
             type="submit"
