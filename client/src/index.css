@@ -127,8 +127,8 @@ border-radius: 4px; /* Apply a rounded border */
 }
 
 .heart-icon {
-  width: 10px; /* Adjust the size of the heart icon */
-  height: 10px; /* Adjust the size of the heart icon */
+  width: 7px; /* Adjust the size of the heart icon */
+  height: 7px; /* Adjust the size of the heart icon */
   background: url('https://res.cloudinary.com/dzghua4dz/image/upload/v1698834043/project4mern/epmegfonsab1egutezpz.png') center/cover no-repeat; /* Use a heart icon image */
   background-color: #e8e0d3;
   padding: 14px;
@@ -136,7 +136,7 @@ border-radius: 4px; /* Apply a rounded border */
   top: 10px; /* Adjust the vertical position */
   right: 10px; /* Adjust the horizontal position */
   z-index: 1; /* Ensure the heart icon is above the image */
-  opacity: 80%;
+  opacity: 60%;
   border-radius: 14px;
 }
 

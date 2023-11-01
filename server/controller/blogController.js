@@ -23,10 +23,11 @@ const uploadImage2 = async (req, res) => {
       // create a new blogModel, with 1st the fields comming inside req.body , and 2nd with the uploadedImage.secureUrl as userImage.
       try {
       const newBlogPost = new blogModel({
-        userImage: uploadedImage.secure_url,
+        blogImage: uploadedImage.secure_url,
         description: req.body.description,
         userName: req.body.userName,
         email: req.body.email,
+        brand: req.body.brand,
         
       });
       console.log('newBlogPost :>> ', newBlogPost);
@@ -35,10 +36,11 @@ const uploadImage2 = async (req, res) => {
       res.status(201).json({
         msg: "new blogpost created!",
         blog: {
-        userImage: savedBlog.userImage,
+          blogImage: savedBlog.blogImage,
         description: savedBlog.description,
         userName: savedBlog.userName,
-        email: savedBlog.email
+        email: savedBlog.email,
+        brand: savedBlog.brand
       }
       })
       }catch (error) {
@@ -65,7 +67,7 @@ const getAllPosts = async (req, res) => {
   try {
     //we make 2 requests to DB here - find and populate. We need to think about how many operations are ok for us
     const allPosts = await blogModel.find();
-    //this is if i have a fieldwhich i wanna populate. in this case i don't have it
+    //this is if i have a field which i wanna populate. in this case i don't have it
     // .populate("user");
 
     console.log("allPosts :>> ", allPosts);
@@ -85,31 +87,31 @@ const getAllPosts = async (req, res) => {
   }
 };
 
-const register2 = async (req, res) => {
-  try {
-    //create new user
-    const newUser = new userModel({
-      userName: req.body.userName,
-      email: req.body.email,
-      //   password: req.body.userName, // it's not coming from here. it needs to be hashed
-      password: hashedPassword,
-      userImage: req.body.userImage,
-    });
-    const savedUser = await newUser.save();
-    res.status(201).json({
-      msg: "new user registered",
-      user: {
-        userName: savedUser.userName,
-        email: savedUser.email,
-        userImage: savedUser.userImage,
-      },
-    });
-  } catch (error) {
-    console.log("error saving user:>> ", error);
-    res.status(500).json({
-      msg: "something went wrong registering the user",
-    });
-  }
-};
+// const register2 = async (req, res) => {
+//   try {
+//     //create new user
+//     const newUser = new userModel({
+//       userName: req.body.userName,
+//       email: req.body.email,
+//       //   password: req.body.userName, // it's not coming from here. it needs to be hashed
+//       password: hashedPassword,
+//       blogImage: req.body.blogImage,
+//     });
+//     const savedUser = await newUser.save();
+//     res.status(201).json({
+//       msg: "new user registered",
+//       user: {
+//         userName: savedUser.userName,
+//         email: savedUser.email,
+//         blogImage: savedUser.blogImage,
+//       },
+//     });
+//   } catch (error) {
+//     console.log("error saving user:>> ", error);
+//     res.status(500).json({
+//       msg: "something went wrong registering the user",
+//     });
+//   }
+// };
 
-export { uploadImage2, register2, getAllPosts };
+export { uploadImage2, getAllPosts };

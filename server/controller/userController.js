@@ -170,3 +170,8 @@ if (checkPassword) {
 
 }
 export {uploadImage, register, login, getAllUsers};
+
+
+
+
+

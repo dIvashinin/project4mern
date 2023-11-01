@@ -17,10 +17,15 @@ const blogSchema = new mongoose.Schema({
 //     type: String,
 //     required: true,
 //   },
-  userImage: {
+blogImage: {
     type: String,
     required: false,
   },
+
+  brand: {
+    type: String,
+    required: true,
+  }
 });
 
 const blogModel = mongoose.model("blog", blogSchema);
