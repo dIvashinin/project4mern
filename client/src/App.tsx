@@ -20,6 +20,8 @@ import Details from "../views/Details";
 import Home from "../views/Home";
 
 
+
+
 // import './App.css';
 
 function App() {

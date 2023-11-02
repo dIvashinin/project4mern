@@ -3,6 +3,8 @@ import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
 // import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+// import { faHeart } from 'font-awesome';
+
 
 function Posts() {
   // State to track user input
@@ -137,7 +139,7 @@ function Posts() {
           <textarea
             name="description"
             onChange={handleBlogInput}
-            placeholder="tell us about it..."
+            placeholder="tell us something about what you gonna post..."
             value={formData.description}
             // onChange={(e) =>
               // setFormData({ ...formData, description: e.target.value })
@@ -207,11 +209,21 @@ function Posts() {
           {filteredPosts &&
             filteredPosts.map((post) => (
               <li key={post._id} className="blog-list-item">
-                <div className="heart-icon"></div>{" "}
                 {/* Add a div for the heart symbol */}
+                <div> 
+                <button className="heart-icon-button">
+                  {/* <img
+                    src={'https://res.cloudinary.com/dzghua4dz/image/upload/v1698834043/project4mern/epmegfonsab1egutezpz.png'}  
+                className="heart-icon" */}
+                {/* /> */}
+                </button>
+              </div>
+                  {/* // </div>{" "} */}
+                {/* <i className="fa-regular fa-heart"></i> */}
+
                 {post.blogImage && (
                   <div className="zoom-container">
-                  <Image
+                  <img
                     src={post.blogImage}
                     alt={post.userName}
                     className="blog-image zoom-image"

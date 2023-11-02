@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import './App.css'
+// import 'font-awesome/css/font-awesome.min.css';
+
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
