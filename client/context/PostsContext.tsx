@@ -18,7 +18,6 @@
 // // 2 define what's inside of our 'store'
 // export const PostsContextProvider = (props:ProviderPropsType) => {
 
-    
 //     return (
 //         <PostsContext.Provider value={{}}>
 //             {props.children}

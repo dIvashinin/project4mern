@@ -5,7 +5,6 @@ import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
 import Image from "react-bootstrap/Image";
 // import { faHeart } from 'font-awesome';
 
-
 function Posts() {
   // State to track user input
   const [inputText, setInputText] = useState("");
@@ -92,10 +91,10 @@ function Posts() {
 
       .catch((error) => console.error("Error fetching posts:", error));
   }, []);
-  
+
   const handleBlogInput = (e) => {
-  // ChangeEvent<HTMLTextAreaElement>
-  // const handleBlogInput = (e:ChangeEvent<HTMLInputElement>) => {
+    // ChangeEvent<HTMLTextAreaElement>
+    // const handleBlogInput = (e:ChangeEvent<HTMLInputElement>) => {
     // this one isn't working because i overwrite formdata each time:
     // setFormData({ ...formData, description: e.target.value })
     // setFormData({ ...formData, userName: e.target.value })
@@ -104,18 +103,16 @@ function Posts() {
 
     const { name, value } = e.target;
 
-  // Update the specific property in the formData based on the input field's "name"
-  setFormData((prevData) => ({
-    //spreading the existing formData 
-    ...prevData,
-    [name]: value,
-  }));
-};
-
-  
+    // Update the specific property in the formData based on the input field's "name"
+    setFormData((prevData) => ({
+      //spreading the existing formData
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   // Function to handle changes in the selected file input
-  const handleImageChange = (e:ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     // setFormData({ ...formData, userImage: e.target.files[0] });
     //we update the selectedFile state
     setSelectedFile(e.target.files![0]);
@@ -142,7 +139,7 @@ function Posts() {
             placeholder="tell us something about what you gonna post..."
             value={formData.description}
             // onChange={(e) =>
-              // setFormData({ ...formData, description: e.target.value })
+            // setFormData({ ...formData, description: e.target.value })
             // }
           />
           <label htmlFor="description">description</label>
@@ -189,7 +186,7 @@ function Posts() {
             name="blogImage"
             id="file"
             onChange={handleImageChange}
-          // onChange={(e) =>}
+            // onChange={(e) =>}
           />
           <button
             type="submit"
@@ -203,31 +200,31 @@ function Posts() {
       <div>
         <h2>Blog</h2>
         <ul className="blog-list">
-{/* here we use map function to display posts/ filtered as well */}
-{/* we used to display all posts, now only filtered ones */}
-{/* {Posts && Posts.map((post) => ( */}
+          {/* here we use map function to display posts/ filtered as well */}
+          {/* we used to display all posts, now only filtered ones */}
+          {/* {Posts && Posts.map((post) => ( */}
           {filteredPosts &&
             filteredPosts.map((post) => (
               <li key={post._id} className="blog-list-item">
                 {/* Add a div for the heart symbol */}
-                <div> 
-                <button className="heart-icon-button">
-                  {/* <img
+                <div>
+                  <button className="heart-icon-button">
+                    {/* <img
                     src={'https://res.cloudinary.com/dzghua4dz/image/upload/v1698834043/project4mern/epmegfonsab1egutezpz.png'}  
                 className="heart-icon" */}
-                {/* /> */}
-                </button>
-              </div>
-                  {/* // </div>{" "} */}
+                    {/* /> */}
+                  </button>
+                </div>
+                {/* // </div>{" "} */}
                 {/* <i className="fa-regular fa-heart"></i> */}
 
                 {post.blogImage && (
                   <div className="zoom-container">
-                  <img
-                    src={post.blogImage}
-                    alt={post.userName}
-                    className="blog-image zoom-image"
-                  />
+                    <img
+                      src={post.blogImage}
+                      alt={post.userName}
+                      className="blog-image zoom-image"
+                    />
                   </div>
                 )}
                 <div className="description-post">
