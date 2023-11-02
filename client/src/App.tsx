@@ -18,6 +18,7 @@ import Posts from "../views/Posts";
 import ErrorPage from "../views/ErrorPage";
 import Details from "../views/Details";
 import Home from "../views/Home";
+// import PostsContextProvider from "../context/PostsContext"
 
 
 
@@ -71,9 +72,11 @@ function App() {
   return (
     <>
       {/* <hr /> */}
+      {/* <PostsContextProvider> */}
 
       <RouterProvider router={router} />
       <Outlet />
+      {/* </PostsContextProvider> */}
       {/* <h1>Store</h1> */}
       {/* <button onClick={logout}>logout</button> */}
       <hr />
