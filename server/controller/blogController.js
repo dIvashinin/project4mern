@@ -106,8 +106,10 @@ const updateBlogImage = async (req, res) => {
           error: "blog post not found"
         });
       }
+      //saving new image URL in a variable
+      const newBlogImageURL = uploadedImage.secure_url;
       //updating blog properties with the new ones
-      blogPost.blogImage = uploadedImage.secure_url;
+      blogPost.blogImage = newBlogImageURL;
       blogPost.description = req.body.description;
       blogPost.userName = req.body.userName;
       blogPost.email = req.body.email;
@@ -121,6 +123,19 @@ const updateBlogImage = async (req, res) => {
       //   };
       //saving it
       const updatedSavedBlogPost = await blogPost.save();
+
+      //now we have it saved so can delete the old one
+      // first check if there's an old image url to delete
+//if exists and is truthy && not equal to the new url
+      if (blogPost.blogImage 
+        && blogPost.blogImage !== newBlogImageURL) {
+        //splitting url at "/project4mern" segment 
+        //[1] is taking the part of url after the segment
+        //split is splitting filename from extension = public ID
+        const publicId = blogPost.blogImage.split("/project4mern/")[1].split(".")[0];
+        //destroy method takes public ID as parameter
+        await cloudinary.uploader.destroy(publicId);
+      }
 
       res.status(200).json({
         msg: "blog post updated successfully",

@@ -162,8 +162,8 @@ border-radius: 4px; /* Apply a rounded border */
   border-radius: 20px;
 }
 .heart-icon-button {
-  width: 20px; /* Adjust the size of the heart icon */
-  height: 20px; /* Adjust the size of the heart icon */
+  width: 10px; /* Adjust the size of the heart icon */
+  height: 10px; /* Adjust the size of the heart icon */
   background: url('https://res.cloudinary.com/dzghua4dz/image/upload/v1698834043/project4mern/epmegfonsab1egutezpz.png') center/cover no-repeat;
   /* Use a heart icon image */
   background-color: #e8e0d3;
@@ -172,9 +172,97 @@ border-radius: 4px; /* Apply a rounded border */
   top: 10px; /* Adjust the vertical position */
   right: 10px; /* Adjust the horizontal position */
   z-index: 1; /* Ensure the heart icon is above the image */
-  opacity: 60%;
+  /* opacity: 60%; */
   border-radius: 20px;
 }
+
+.update-blog-post{
+  width: 10px; /* Adjust the size of the heart icon */
+  height: 10px; /* Adjust the size of the heart icon */
+  background: url('https://res.cloudinary.com/dzghua4dz/image/upload/v1699009757/siqf7vmefhzjsepd1jes.png') center/cover no-repeat;
+  /* Use a heart icon image */
+  background-color: #e8e0d3;
+  padding: 8px;
+  position: absolute; /* Position it absolutely within the .blog-list-item */
+  top: 10px; /* Adjust the vertical position */
+  right: 35px; /* Adjust the horizontal position */
+  z-index: 1; /* Ensure the heart icon is above the image */
+  /* opacity: 60%; */
+  border-radius: 20px;
+}
+/* Modal container */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Open the modal */
+.modal.open {
+  display: block;
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+/* Modal header */
+.modal-content h2 {
+  margin: 0;
+  padding: 10px;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Modal form input */
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Modal buttons */
+.modal-content button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Close button */
+.modal-content button:last-child {
+  background-color: #ccc;
+}
+
+/* Close button on hover */
+.modal-content button:last-child:hover {
+  background-color: #999;
+}
+
+
+/* 
+for delete button
+https://res.cloudinary.com/dzghua4dz/image/upload/v1699009928/hg6peuj1rynjbijjix0w.png
+*/
 
 /* navbar.css */
 .navbar {

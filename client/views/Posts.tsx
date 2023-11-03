@@ -4,6 +4,7 @@ import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
 // import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 // import { faHeart } from 'font-awesome';
+import EditPostModal from '../components/ModalEditBlog';
 
 function Posts() {
   // State to track user input
@@ -117,6 +118,46 @@ function Posts() {
     //we update the selectedFile state
     setSelectedFile(e.target.files![0]);
   };
+// State variables for the update form
+const [editingPost, setEditingPost] = useState(null);
+const [showUpdateForm, setShowUpdateForm] = useState(false);
+
+// function to handle update
+  const handleUpdateClick = (post) => {
+    //to store post data i want to edit and have prefill to be able to modify
+    setEditingPost(post);
+    //to show update form to user
+  setShowUpdateForm(true); // Set a state to show the update form
+  };
+  // Function to handle closing the modal
+  const handleCloseModal = () => {
+    setShowUpdateForm(false);
+  };
+  // Function to handle post updates
+  const handleUpdatePost = (updatedPost) => {
+    //PUT request to update
+    fetch (`/api/posts/${updatedPost._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedPost),
+    })
+    .then((res) => {
+if (res.status === 200) {
+  // if successful update, close the modal
+  handleCloseModal();
+  // fetchPosts();
+} else {
+  console.error('update failed');
+}
+    })
+    .catch((error) => {
+      console.error('network error', error);
+      
+    });
+  };
+
   return (
     <div>
       <div className="searchbar">
@@ -214,7 +255,20 @@ function Posts() {
                 className="heart-icon" */}
                     {/* /> */}
                   </button>
+
+                <button className="update-blog-post" onClick={() => handleUpdateClick(post)}></button>
+
                 </div>
+                {/* Modal for editing posts */}
+                <EditPostModal
+                  isOpen={showUpdateForm}
+                  editPost={editingPost}
+                  onClose={handleCloseModal}
+                  onSave={handleUpdatePost}
+                />
+
+                
+
                 {/* // </div>{" "} */}
                 {/* <i className="fa-regular fa-heart"></i> */}
 
@@ -238,6 +292,7 @@ function Posts() {
         </ul>
       </div>
     </div>
+    
   );
 }
 
