@@ -87,6 +87,10 @@ const getAllPosts = async (req, res) => {
   }
 };
 
+const updateImage = async (req, res) => {
+  console.log('updateImg ok :>> ', updateImage);
+};
+
 // const register2 = async (req, res) => {
 //   try {
 //     //create new user
@@ -114,4 +118,4 @@ const getAllPosts = async (req, res) => {
 //   }
 // };
 
-export { uploadImage2, getAllPosts };
+export { uploadImage2, getAllPosts, updateImage };
