@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function EditPostModal({ editPost, isOpen, onClose, onSave }) {
-  const [editedPost, setEditedPost] = useState({});
+  const [editedPost, setEditedPost] = useState(post);
 
   const handleSave = () => {
     onSave(editedPost);
@@ -15,14 +15,14 @@ function EditPostModal({ editPost, isOpen, onClose, onSave }) {
         <form>
         <textarea
             name="description"
-            value={editedPost.description}
             onChange={(e) => setEditedPost({...editedPost, description: e.target.value})}
+            value={editedPost.description}
            
             />
           <input
             type="text"
-            value={editedPost.userName}
             onChange={(e) => setEditedPost({ ...editedPost, userName: e.target.value })}
+            value={editedPost.userName}
           />
           <input
             type="text"
