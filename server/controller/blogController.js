@@ -87,9 +87,106 @@ const getAllPosts = async (req, res) => {
   }
 };
 
-const updateImage = async (req, res) => {
-  console.log('updateImg ok :>> ', updateImage);
-};
+const updateBlogImage = async (req, res) => {
+  // console.log('updateImg ok :>> ', updateBlogImage);
+  // console.log('req :>> ', req);
+
+  if (req.file) {
+    // if there's a field called "file" in the request, we try to upload file to cloudinary
+    try {
+      const uploadedImage = await cloudinary.uploader.upload(req.file.path, {
+        folder: "project4mern",
+      });
+      // Find the specific blog post by its unique identifier (e.g., post ID)
+      const postId = req.params.id;
+      const blogPost = await blogModel.findById(postId);
+
+      if (!blogPost) {
+        return res.status(404).json({
+          error: "blog post not found"
+        });
+      }
+      //updating blog properties with the new ones
+      blogPost.blogImage = uploadedImage.secure_url;
+      blogPost.description = req.body.description;
+      blogPost.userName = req.body.userName;
+      blogPost.email = req.body.email;
+      blogPost.brand = req.body.brand; 
+      // const updatedBlogPost = {
+      //     blogImage: uploadedImage.secure_url,
+      //     description: req.body.description,
+      //     userName: req.body.userName,
+      //     email: req.body.email,
+      //     brand: req.body.brand,
+      //   };
+      //saving it
+      const updatedSavedBlogPost = await blogPost.save();
+
+      res.status(200).json({
+        msg: "blog post updated successfully",
+        blog: updatedSavedBlogPost,
+      });
+    } catch (error) {
+      console.log('error updating blog:>> ', error);
+      res.status(500).json({
+        msg: "smth went wrong updating"
+      });
+    }
+  } else {
+    res.status(500).json({
+      error: "file type is not supported",
+    });
+  }
+}
+
+      // console.log("uploadedImage :>> ", uploadedImage);
+      // res.status(200).json({
+      //   message: "image uploaded successfully",
+      //   userImage: uploadedImage.secure_url,
+      // });
+      // if uploadedImage is successful (returns a valid object), save that URL into the user collection
+      // create a new blogModel, with 1st the fields comming inside req.body , and 2nd with the uploadedImage.secureUrl as userImage.
+//       try {
+//       const newBlogPost = new blogModel({
+//         blogImage: uploadedImage.secure_url,
+//         description: req.body.description,
+//         userName: req.body.userName,
+//         email: req.body.email,
+//         brand: req.body.brand,
+        
+//       });
+//       console.log('newBlogPost :>> ', newBlogPost);
+//       const savedBlog = await newBlogPost.save()
+//       //after doing that, send a response to the client, confirming that the  upload has been sucessful, and maybe including the object the new blog.
+//       res.status(201).json({
+//         msg: "new blogpost created!",
+//         blog: {
+//           blogImage: savedBlog.blogImage,
+//         description: savedBlog.description,
+//         userName: savedBlog.userName,
+//         email: savedBlog.email,
+//         brand: savedBlog.brand
+//       }
+//       })
+//       }catch (error) {
+//         console.log('error creatin blog post', error);
+//         res.status(500).json({
+//           msg: 'smth went wrong creating a blog post',
+//         });
+//       }
+      
+
+//     } catch (error) {
+//       console.log("error :>> ", error);
+//     }
+//   } else {
+//     res.status(500).json({
+//       error: "file type is not supported",
+//     });
+//   }
+// };
+
+
 
 // const register2 = async (req, res) => {
 //   try {
@@ -118,4 +215,4 @@ const updateImage = async (req, res) => {
 //   }
 // };
 
-export { uploadImage2, getAllPosts, updateImage };
+export { uploadImage2, getAllPosts, updateBlogImage };
