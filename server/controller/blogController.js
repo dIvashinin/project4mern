@@ -22,35 +22,32 @@ const uploadImage2 = async (req, res) => {
       // if uploadedImage is successful (returns a valid object), save that URL into the user collection
       // create a new blogModel, with 1st the fields comming inside req.body , and 2nd with the uploadedImage.secureUrl as userImage.
       try {
-      const newBlogPost = new blogModel({
-        blogImage: uploadedImage.secure_url,
-        description: req.body.description,
-        userName: req.body.userName,
-        email: req.body.email,
-        brand: req.body.brand,
-        
-      });
-      console.log('newBlogPost :>> ', newBlogPost);
-      const savedBlog = await newBlogPost.save()
-      //after doing that, send a response to the client, confirming that the  upload has been sucessful, and maybe including the object the new blog.
-      res.status(201).json({
-        msg: "new blogpost created!",
-        blog: {
-          blogImage: savedBlog.blogImage,
-        description: savedBlog.description,
-        userName: savedBlog.userName,
-        email: savedBlog.email,
-        brand: savedBlog.brand
-      }
-      })
-      }catch (error) {
-        console.log('error creatin blog post', error);
+        const newBlogPost = new blogModel({
+          blogImage: uploadedImage.secure_url,
+          description: req.body.description,
+          userName: req.body.userName,
+          email: req.body.email,
+          brand: req.body.brand,
+        });
+        console.log("newBlogPost :>> ", newBlogPost);
+        const savedBlog = await newBlogPost.save();
+        //after doing that, send a response to the client, confirming that the  upload has been sucessful, and maybe including the object the new blog.
+        res.status(201).json({
+          msg: "new blogpost created!",
+          blog: {
+            blogImage: savedBlog.blogImage,
+            description: savedBlog.description,
+            userName: savedBlog.userName,
+            email: savedBlog.email,
+            brand: savedBlog.brand,
+          },
+        });
+      } catch (error) {
+        console.log("error creatin blog post", error);
         res.status(500).json({
-          msg: 'smth went wrong creating a blog post',
+          msg: "smth went wrong creating a blog post",
         });
       }
-      
-
     } catch (error) {
       console.log("error :>> ", error);
     }
@@ -103,7 +100,7 @@ const updateBlogImage = async (req, res) => {
 
       if (!blogPost) {
         return res.status(404).json({
-          error: "blog post not found"
+          error: "blog post not found",
         });
       }
       //saving new image URL in a variable
@@ -113,7 +110,7 @@ const updateBlogImage = async (req, res) => {
       blogPost.description = req.body.description;
       blogPost.userName = req.body.userName;
       blogPost.email = req.body.email;
-      blogPost.brand = req.body.brand; 
+      blogPost.brand = req.body.brand;
       // const updatedBlogPost = {
       //     blogImage: uploadedImage.secure_url,
       //     description: req.body.description,
@@ -126,13 +123,14 @@ const updateBlogImage = async (req, res) => {
 
       //now we have it saved so can delete the old one
       // first check if there's an old image url to delete
-//if exists and is truthy && not equal to the new url
-      if (blogPost.blogImage 
-        && blogPost.blogImage !== newBlogImageURL) {
-        //splitting url at "/project4mern" segment 
+      //if exists and is truthy && not equal to the new url
+      if (blogPost.blogImage && blogPost.blogImage !== newBlogImageURL) {
+        //splitting url at "/project4mern" segment
         //[1] is taking the part of url after the segment
         //split is splitting filename from extension = public ID
-        const publicId = blogPost.blogImage.split("/project4mern/")[1].split(".")[0];
+        const publicId = blogPost.blogImage
+          .split("/project4mern/")[1]
+          .split(".")[0];
         //destroy method takes public ID as parameter
         await cloudinary.uploader.destroy(publicId);
       }
@@ -142,9 +140,9 @@ const updateBlogImage = async (req, res) => {
         blog: updatedSavedBlogPost,
       });
     } catch (error) {
-      console.log('error updating blog:>> ', error);
+      console.log("error updating blog:>> ", error);
       res.status(500).json({
-        msg: "smth went wrong updating"
+        msg: "smth went wrong updating",
       });
     }
   } else {
@@ -152,15 +150,15 @@ const updateBlogImage = async (req, res) => {
       error: "file type is not supported",
     });
   }
-}
+};
 
-      // console.log("uploadedImage :>> ", uploadedImage);
-      // res.status(200).json({
-      //   message: "image uploaded successfully",
-      //   userImage: uploadedImage.secure_url,
-      // });
-      // if uploadedImage is successful (returns a valid object), save that URL into the user collection
-      // create a new blogModel, with 1st the fields comming inside req.body , and 2nd with the uploadedImage.secureUrl as userImage.
+// console.log("uploadedImage :>> ", uploadedImage);
+// res.status(200).json({
+//   message: "image uploaded successfully",
+//   userImage: uploadedImage.secure_url,
+// });
+// if uploadedImage is successful (returns a valid object), save that URL into the user collection
+// create a new blogModel, with 1st the fields comming inside req.body , and 2nd with the uploadedImage.secureUrl as userImage.
 //       try {
 //       const newBlogPost = new blogModel({
 //         blogImage: uploadedImage.secure_url,
@@ -168,7 +166,7 @@ const updateBlogImage = async (req, res) => {
 //         userName: req.body.userName,
 //         email: req.body.email,
 //         brand: req.body.brand,
-        
+
 //       });
 //       console.log('newBlogPost :>> ', newBlogPost);
 //       const savedBlog = await newBlogPost.save()
@@ -189,7 +187,6 @@ const updateBlogImage = async (req, res) => {
 //           msg: 'smth went wrong creating a blog post',
 //         });
 //       }
-      
 
 //     } catch (error) {
 //       console.log("error :>> ", error);
@@ -200,8 +197,6 @@ const updateBlogImage = async (req, res) => {
 //     });
 //   }
 // };
-
-
 
 // const register2 = async (req, res) => {
 //   try {
