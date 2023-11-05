@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
+
 function EditPostModal({ editPost, isOpen, onClose, onSave }) {
-  const [editedPost, setEditedPost] = useState(post);
+    const [editedPost, setEditedPost] = useState([]);
+    
 
   const handleSave = () => {
     onSave(editedPost);

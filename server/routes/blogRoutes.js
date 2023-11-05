@@ -14,6 +14,6 @@ router.get("/all", getAllPosts);
 
 // router.put("/updateBlogImage",multerUpload.single("blogImage"), updateBlogImage );
 
-router.put("/:id", updateBlogImage )
+router.put("/:id", multerUpload.single("blogImage"), updateBlogImage );
 
 export default router;

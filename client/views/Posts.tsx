@@ -136,7 +136,7 @@ function Posts() {
   // Function to handle post updates
   const handleUpdatePost = (updatedPost) => {
     //PUT request to update
-    fetch(`/api/posts/${updatedPost._id}`, {
+    fetch(`http://localhost:5001/api/posts/${updatedPost._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
