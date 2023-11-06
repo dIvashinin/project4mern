@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 
 
 function EditPostModal({ editPost, isOpen, onClose, onSave }) {
-    const [editedPost, setEditedPost] = useState([]);
+    const [editedPost, setEditedPost] = useState(editPost || {
+
+      description: '',
+      userName: '',
+      email:'',
+      brand: '',
+    });
     
 
   const handleSave = () => {
@@ -36,11 +42,11 @@ function EditPostModal({ editPost, isOpen, onClose, onSave }) {
             value={editedPost.brand}
             onChange={(e) => setEditedPost({ ...editedPost, brand: e.target.value })}
           />
-          <input
+          {/* <input
             type="file"
             value={editedPost.blogImage}
-            onChange={(e) => setEditedPost({ ...editedPost, blogImage: e.target.value })}
-          />
+            onChange={(e) => setEditedPost({ ...editedPost, blogImage: e.target.files![0] })}
+          /> */}
 
           {/* Add more form fields for other post details */}
           <button onClick={handleSave}>Save Changes</button>

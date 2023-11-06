@@ -135,13 +135,17 @@ function Posts() {
   };
   // Function to handle post updates
   const handleUpdatePost = (updatedPost) => {
+
+     // Remove the 'blogImage' property from the updated post
+  const { blogImage, ...postWithoutImage } = updatedPost;
+
     //PUT request to update
     fetch(`http://localhost:5001/api/posts/${updatedPost._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updatedPost),
+      body: JSON.stringify(postWithoutImage),
     })
       .then((res) => {
         if (res.status === 200) {

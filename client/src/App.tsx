@@ -32,6 +32,7 @@ function App() {
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route index element = {<Home/>} />
         <Route path="posts" element={<Posts />} />
+        {/* <Route path="posts/:id" element={<Id />} /> */}
         <Route path="posts/:details" element={<Details />} />
         <Route path="about" element={<About />} />
         <Route path="register" element={<Register />} />

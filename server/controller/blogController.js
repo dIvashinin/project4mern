@@ -67,7 +67,7 @@ const getAllPosts = async (req, res) => {
     //this is if i have a field which i wanna populate. in this case i don't have it
     // .populate("user");
 
-    console.log("allPosts :>> ", allPosts);
+    // console.log("allPosts :>> ", allPosts);
     if (allPosts.length < 1) {
       res.status(204).json({ message: "no blogs" });
     } else {
@@ -86,71 +86,74 @@ const getAllPosts = async (req, res) => {
 
 const updateBlogImage = async (req, res) => {
   // console.log('updateImg ok :>> ', updateBlogImage);
-  // console.log('req :>> ', req);
+  console.log('req :>> ', req);
 
-  if (req.file) {
-    // if there's a field called "file" in the request, we try to upload file to cloudinary
-    try {
-      const uploadedImage = await cloudinary.uploader.upload(req.file.path, {
-        folder: "project4mern",
-      });
+
+  // if (req.file) {
+  //   // if there's a field called "file" in the request, we try to upload file to cloudinary
+  //   try {
+  //     const uploadedImage = await cloudinary.uploader.upload(req.file.path, {
+  //       folder: "project4mern",
+  //     });
       // Find the specific blog post by its unique identifier (e.g., post ID)
       const postId = req.params.id;
-      const blogPost = await blogModel.findById(postId);
+      console.log('postId :>> ', postId);
+  //     const blogPost = await blogModel.findById(postId);
 
-      if (!blogPost) {
-        return res.status(404).json({
-          error: "blog post not found",
-        });
-      }
-      //saving new image URL in a variable
-      const newBlogImageURL = uploadedImage.secure_url;
-      //updating blog properties with the new ones
-      blogPost.blogImage = newBlogImageURL;
-      blogPost.description = req.body.description;
-      blogPost.userName = req.body.userName;
-      blogPost.email = req.body.email;
-      blogPost.brand = req.body.brand;
-      // const updatedBlogPost = {
-      //     blogImage: uploadedImage.secure_url,
-      //     description: req.body.description,
-      //     userName: req.body.userName,
-      //     email: req.body.email,
-      //     brand: req.body.brand,
-      //   };
-      //saving it
-      const updatedSavedBlogPost = await blogPost.save();
+  //     if (!blogPost) {
+  //       return res.status(404).json({
+  //         error: "blog post not found",
+  //       });
+  //     }
+  //     //saving new image URL in a variable
+  //     const newBlogImageURL = uploadedImage.secure_url;
+  //     //updating blog properties with the new ones
+  //     blogPost.blogImage = newBlogImageURL;
+  //     blogPost.description = req.body.description;
+  //     blogPost.userName = req.body.userName;
+  //     blogPost.email = req.body.email;
+  //     blogPost.brand = req.body.brand;
+  //     // const updatedBlogPost = {
+  //     //     blogImage: uploadedImage.secure_url,
+  //     //     description: req.body.description,
+  //     //     userName: req.body.userName,
+  //     //     email: req.body.email,
+  //     //     brand: req.body.brand,
+  //     //   };
+  //     //saving it
+  //     const updatedSavedBlogPost = await blogPost.save();
 
-      //now we have it saved so can delete the old one
-      // first check if there's an old image url to delete
-      //if exists and is truthy && not equal to the new url
-      if (blogPost.blogImage && blogPost.blogImage !== newBlogImageURL) {
-        //splitting url at "/project4mern" segment
-        //[1] is taking the part of url after the segment
-        //split is splitting filename from extension = public ID
-        const publicId = blogPost.blogImage
-          .split("/project4mern/")[1]
-          .split(".")[0];
-        //destroy method takes public ID as parameter
-        await cloudinary.uploader.destroy(publicId);
-      }
+  //     //now we have it saved so can delete the old one
+  //     // first check if there's an old image url to delete
+  //     //if exists and is truthy && not equal to the new url
+  //     if (blogPost.blogImage && blogPost.blogImage !== newBlogImageURL) {
+  //       //splitting url at "/project4mern" segment
+  //       //[1] is taking the part of url after the segment
+  //       //split is splitting filename from extension = public ID
+  //       const publicId = blogPost.blogImage
+  //         .split("/project4mern/")[1]
+  //         .split(".")[0];
+  //       //destroy method takes public ID as parameter
+  //       await cloudinary.uploader.destroy(publicId);
+  //     }
 
-      res.status(200).json({
-        msg: "blog post updated successfully",
-        blog: updatedSavedBlogPost,
-      });
-    } catch (error) {
-      console.log("error updating blog:>> ", error);
-      res.status(500).json({
-        msg: "smth went wrong updating",
-      });
-    }
-  } else {
-    res.status(500).json({
-      error: "file type is not supported",
-    });
-  }
-};
+  //     res.status(200).json({
+  //       msg: "blog post updated successfully",
+  //       blog: updatedSavedBlogPost,
+  //     });
+  //   } catch (error) {
+  //     console.log("error updating blog:>> ", error);
+  //     res.status(500).json({
+  //       msg: "smth went wrong updating",
+  //     });
+  //   }
+  // } else {
+  //   res.status(500).json({
+  //     error: "file type is not supported",
+  //   });
+    };
+  // }
+// };
 
 // console.log("uploadedImage :>> ", uploadedImage);
 // res.status(200).json({
