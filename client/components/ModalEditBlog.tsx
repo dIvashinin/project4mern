@@ -60,9 +60,10 @@ const { description, userName, email, brand } = editPost || {};
             // onChange={handleInputChange}
             // onChange={(e) => setEditedPost({...editedPost, description: e.target.value})}
             // value={editedPost.description}
-           
             />
+            <label htmlFor="description">description</label>
           <input
+          name="userName"
             type="text"
             onChange={(e) => setEditedUserName(e.target.value)}
             value={editedUserName}
@@ -70,7 +71,9 @@ const { description, userName, email, brand } = editPost || {};
             // value={editedPost.userName}
             // onChange={(e) => setEditedPost({ ...editedPost, userName: e.target.value })}
           />
+          <label htmlFor="userName">user name</label>
           <input
+          name="email"
             type="text"
             onChange={(e) => setEditedEmail(e.target.value)}
             value={editedEmail}
@@ -78,7 +81,9 @@ const { description, userName, email, brand } = editPost || {};
             // value={editedPost.email}
             // onChange={(e) => setEditedPost({ ...editedPost, email: e.target.value })}
           />
+          <label htmlFor="email">email</label>
           <input
+          name="brand"
             type="text"
             onChange={(e) => setEditedBrand(e.target.value)}
             value={editedBrand}
@@ -86,6 +91,7 @@ const { description, userName, email, brand } = editPost || {};
             // onChange={(e) => setEditedPost({ ...editedPost, brand: e.target.value })}
             // value={editedPost.brand}
           />
+          <label htmlFor="brand">brand</label>
           {/* <input
             type="file"
             value={editedPost.blogImage}

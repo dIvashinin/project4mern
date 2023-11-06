@@ -142,7 +142,7 @@ function Posts() {
   const { blogImage, ...postWithoutImage } = updatedPost;
 
     //PUT request to update
-    fetch(`http://localhost:5001/api/posts/${updatedPost._id}`, {
+    fetch('http://localhost:5001/api/posts/update', {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

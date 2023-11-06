@@ -85,8 +85,11 @@ const getAllPosts = async (req, res) => {
 };
 
 const updateBlog = async (req, res) => {
-  // console.log('updateImg ok :>> ', updateBlogImage);
-  console.log('req :>> ', req);
+  console.log('updateImg ok :>> ', updateBlog);
+  // console.log('req :>> ', req);
+  console.log('req.params :>> ', req.params);
+  console.log('req.body :>> ', req.body);
+  console.log('post._id :>> ', post._id);
   //1. if it is the image...the image will arrive in req.file
   //2.rest of the fields: should be sent in the req.body
   //3.use a moongoose method ...findByIdAndUpdate
@@ -99,8 +102,8 @@ const updateBlog = async (req, res) => {
   //       folder: "project4mern",
   //     });
       // Find the specific blog post by its unique identifier (e.g., post ID)
-      const postId = req.params.id;
-      console.log('postId :>> ', postId);
+      // const postId = req.params.id;
+      // console.log('postId :>> ', postId);
   //     const blogPost = await blogModel.findById(postId);
 
   //     if (!blogPost) {
