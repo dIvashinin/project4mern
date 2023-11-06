@@ -5,11 +5,12 @@ import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
 // import Image from "react-bootstrap/Image";
 // import { faHeart } from 'font-awesome';
 import EditPostModal from "../components/ModalEditBlog";
+import { Post } from "../src/types/customTypes";
 
 function Posts() {
   // State to track user input
   const [inputText, setInputText] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
   //we form data, it's empty. that's a built-in object
   // State to hold form data (description, user name, email, and selected file)
   const [formData, setFormData] = useState({
@@ -22,7 +23,11 @@ function Posts() {
   // State to track the selected file
   const [selectedFile, setSelectedFile] = useState<File | String>("");
   // State to store the list of blog posts
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
+  
+  // State variables for the update form
+  const [editingPost, setEditingPost] = useState<Post>({});
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   // Function to handle changes in the search input
   const inputChangeHandler = (e) => {
@@ -118,12 +123,9 @@ function Posts() {
     //we update the selectedFile state
     setSelectedFile(e.target.files![0]);
   };
-  // State variables for the update form
-  const [editingPost, setEditingPost] = useState(null);
-  const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   // function to handle update
-  const handleUpdateClick = (post) => {
+  const handleUpdateClick = (post:Post) => {
     //to store post data i want to edit and have prefill to be able to modify
     setEditingPost(post);
     //to show update form to user

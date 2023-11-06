@@ -1,21 +1,53 @@
 import React, { useState } from 'react';
+import { Post } from '../src/types/customTypes';
+interface EditPostModalProps {
+  isOpen:boolean;
+  onClose:()=>void;
+  onSave: (a:any)=> void;
+  editPost:Post
+}
 
 
-function EditPostModal({ editPost, isOpen, onClose, onSave }) {
-    const [editedPost, setEditedPost] = useState(editPost || {
+function EditPostModal({ editPost, isOpen, onClose, onSave }: EditPostModalProps) {
+// Destructure the editPost data
+const { description, userName, email, brand } = editPost || {};
 
-      description: '',
-      userName: '',
-      email:'',
-      brand: '',
-    });
-    
+
+    // const [editedPost, setEditedPost] = useState(editPost || {
+
+    //   description: '',
+    //   userName: '',
+    //   email:'',
+    //   brand: '',
+    // });
+
+    // Create separate state variables for each input
+  const [editedDescription, setEditedDescription] = useState(description || '');
+  const [editedUserName, setEditedUserName] = useState(userName || '');
+  const [editedEmail, setEditedEmail] = useState(email || '');
+  const [editedBrand, setEditedBrand] = useState(brand || '');
+
+   // Handle changes to input fields
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   console.log(`Input changed: name=${name}, value=${value}`);
+  //   console.log('editedPost :>> ', editedPost);
+  //   setEditedPost({ ...editedPost, [name]: value });
+  // };
 
   const handleSave = () => {
-    onSave(editedPost);
-    onClose();
-  };
+    const updatedPost = {
+      description: editedDescription,
+      userName: editedUserName,
+      email: editedEmail,
+      brand: editedBrand,
+    };
 
+  // const handleSave = () => {
+    onSave(updatedPost);
+    onClose();
+  // };
+  }
   return (
     <div className={`modal ${isOpen ? 'open' : ''}`}>
       <div className="modal-content">
@@ -23,24 +55,36 @@ function EditPostModal({ editPost, isOpen, onClose, onSave }) {
         <form>
         <textarea
             name="description"
-            onChange={(e) => setEditedPost({...editedPost, description: e.target.value})}
-            value={editedPost.description}
+            onChange={(e) => setEditedDescription(e.target.value)}
+            value={editedDescription}
+            // onChange={handleInputChange}
+            // onChange={(e) => setEditedPost({...editedPost, description: e.target.value})}
+            // value={editedPost.description}
            
             />
           <input
             type="text"
-            onChange={(e) => setEditedPost({ ...editedPost, userName: e.target.value })}
-            value={editedPost.userName}
+            onChange={(e) => setEditedUserName(e.target.value)}
+            value={editedUserName}
+            // onChange={handleInputChange}
+            // value={editedPost.userName}
+            // onChange={(e) => setEditedPost({ ...editedPost, userName: e.target.value })}
           />
           <input
             type="text"
-            value={editedPost.email}
-            onChange={(e) => setEditedPost({ ...editedPost, email: e.target.value })}
+            onChange={(e) => setEditedEmail(e.target.value)}
+            value={editedEmail}
+            // onChange={handleInputChange}
+            // value={editedPost.email}
+            // onChange={(e) => setEditedPost({ ...editedPost, email: e.target.value })}
           />
           <input
             type="text"
-            value={editedPost.brand}
-            onChange={(e) => setEditedPost({ ...editedPost, brand: e.target.value })}
+            onChange={(e) => setEditedBrand(e.target.value)}
+            value={editedBrand}
+            // onChange={handleInputChange}
+            // onChange={(e) => setEditedPost({ ...editedPost, brand: e.target.value })}
+            // value={editedPost.brand}
           />
           {/* <input
             type="file"
@@ -55,7 +99,7 @@ function EditPostModal({ editPost, isOpen, onClose, onSave }) {
       </div>
     </div>
   );
-}
 
+}
 export default EditPostModal;
 

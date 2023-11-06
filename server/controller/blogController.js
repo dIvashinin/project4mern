@@ -84,11 +84,14 @@ const getAllPosts = async (req, res) => {
   }
 };
 
-const updateBlogImage = async (req, res) => {
+const updateBlog = async (req, res) => {
   // console.log('updateImg ok :>> ', updateBlogImage);
   console.log('req :>> ', req);
-
-
+  //1. if it is the image...the image will arrive in req.file
+  //2.rest of the fields: should be sent in the req.body
+  //3.use a moongoose method ...findByIdAndUpdate
+// const updatedBlog = await blogModel.findByIdAndUpdate(req.body.blogId, {text: req.body.text},{new:true})
+// console.log('updatedBlog :>> ', updatedBlog);
   // if (req.file) {
   //   // if there's a field called "file" in the request, we try to upload file to cloudinary
   //   try {
@@ -228,4 +231,4 @@ const updateBlogImage = async (req, res) => {
 //   }
 // };
 
-export { uploadImage2, getAllPosts, updateBlogImage };
+export { uploadImage2, getAllPosts, updateBlog };
