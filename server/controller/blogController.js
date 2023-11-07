@@ -85,25 +85,25 @@ const getAllPosts = async (req, res) => {
 };
 
 const updateBlog = async (req, res) => {
-  console.log('updateImg ok :>> ', updateBlog);
+  console.log("updateImg ok :>> ", updateBlog);
   // console.log('req :>> ', req);
-  console.log('req.params :>> ', req.params);
-  console.log('req.body :>> ', req.body);
-  console.log('post._id :>> ', post._id);
+  console.log("req.params :>> ", req.params);
+  console.log("req.body :>> ", req.body);
+  // console.log('post._id :>> ', post._id);
   //1. if it is the image...the image will arrive in req.file
   //2.rest of the fields: should be sent in the req.body
   //3.use a moongoose method ...findByIdAndUpdate
-// const updatedBlog = await blogModel.findByIdAndUpdate(req.body.blogId, {text: req.body.text},{new:true})
-// console.log('updatedBlog :>> ', updatedBlog);
+  // const updatedBlog = await blogModel.findByIdAndUpdate(req.body.blogId, {text: req.body.text},{new:true})
+  // console.log('updatedBlog :>> ', updatedBlog);
   // if (req.file) {
   //   // if there's a field called "file" in the request, we try to upload file to cloudinary
   //   try {
   //     const uploadedImage = await cloudinary.uploader.upload(req.file.path, {
   //       folder: "project4mern",
   //     });
-      // Find the specific blog post by its unique identifier (e.g., post ID)
-      // const postId = req.params.id;
-      // console.log('postId :>> ', postId);
+  // Find the specific blog post by its unique identifier (e.g., post ID)
+  // const postId = req.params.id;
+  // console.log('postId :>> ', postId);
   //     const blogPost = await blogModel.findById(postId);
 
   //     if (!blogPost) {
@@ -157,8 +157,8 @@ const updateBlog = async (req, res) => {
   //   res.status(500).json({
   //     error: "file type is not supported",
   //   });
-    };
-  // }
+};
+// }
 // };
 
 // console.log("uploadedImage :>> ", uploadedImage);
