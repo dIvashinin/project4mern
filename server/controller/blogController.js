@@ -97,10 +97,25 @@ const getSinglePost = async(req,res) =>{
 };
 
 const updateBlog = async (req, res) => {
-  console.log("updateImg ok :>> ", updateBlog);
+  try {
+    const {id} = req.params;
+    const singlePost = await blogModel.findByIdAndUpdate(id, req.body, {new:true});
+    if(!singlePost){
+      return res.status(404).json({
+        message: `cannot find blog post with ID ${id}`
+      })
+    }res.status(200).json(singlePost)
+    
+  } catch (error) {
+    res.status(500).json({
+      error: "something went wrong in the server",
+    });
+  }
+}
+  // console.log("updateImg ok :>> ", updateBlog);
   // console.log('req :>> ', req);
-  console.log("req.params :>> ", req.params);
-  console.log("req.body :>> ", req.body);
+  // console.log("req.params :>> ", req.params);
+  // console.log("req.body :>> ", req.body);
   // console.log('post._id :>> ', post._id);
   //1. if it is the image...the image will arrive in req.file
   //2.rest of the fields: should be sent in the req.body
@@ -169,7 +184,7 @@ const updateBlog = async (req, res) => {
   //   res.status(500).json({
   //     error: "file type is not supported",
   //   });
-};
+// };
 // }
 // };
 
