@@ -3,7 +3,7 @@ import { getAllPosts,getSinglePost, uploadImage2, updateBlog, deleteBlog } from 
 
 import multerUpload from "../middlewares/multer.js";
 const router = express.Router();
-
+// in ROUTES we should have only ROUTES, the logic goes to CONTROLLER
 
 // router.post("/imageUpload", multerUpload.single("userImage"), uploadImage2);
 // router.post("/register", register2);

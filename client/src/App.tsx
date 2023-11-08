@@ -15,9 +15,11 @@ import About from "../views/About";
 import MyNavbar from "../components/Navbar";
 // import Products from "../views/Products";
 import Posts from "../views/Posts";
+import Edit from "../views/Edit";
 import ErrorPage from "../views/ErrorPage";
 import Details from "../views/Details";
 import Home from "../views/Home";
+
 // import PostsContextProvider from "../context/PostsContext"
 
 
@@ -33,6 +35,7 @@ function App() {
         <Route index element = {<Home/>} />
         <Route path="posts" element={<Posts />} />
         {/* <Route path="posts/:id" element={<Id />} /> */}
+        <Route path="edit" element={<Edit />} />
         <Route path="posts/:details" element={<Details />} />
         <Route path="about" element={<About />} />
         <Route path="register" element={<Register />} />
