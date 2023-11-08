@@ -1,10 +1,5 @@
 import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
-// import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-// import Image from "react-bootstrap/Image";
-// import { faHeart } from 'font-awesome';
-import EditPostModal from "../components/ModalEditBlog";
+// import EditPostModal from "../components/ModalEditBlog";
 import { Post } from "../src/types/customTypes";
 import { Link } from "react-router-dom";
 
@@ -52,6 +47,7 @@ function Posts() {
   // Function to handle the form submission (creating a new blog post)
   const handlePostSubmit = async (e) => {
     e.preventDefault();
+   
     // console.log('e ', e.target.value);
     // Create a new FormData object to send the form data (description, user name, email, and selected file)
     const formdata = new FormData();
@@ -76,11 +72,12 @@ function Posts() {
       // do another fetch request to an endpoint sending the formData , now with all the information already available
       const updatedPostsResponse = await fetch(
         "http://localhost:5001/api/posts/all"
-      );
-      const updatedPostsData = await updatedPostsResponse.json();
-      // Update local state with the updated data
-      setPosts(updatedPostsData.allPosts);
-      setFilteredPosts(updatedPostsData.allPosts);
+        );
+        const updatedPostsData = await updatedPostsResponse.json();
+        // Update local state with the updated data
+        setPosts(updatedPostsData.allPosts);
+        setFilteredPosts(updatedPostsData.allPosts);
+        alert ('save success');
     } catch (error) {
       console.log("error :>> ", error);
     }
@@ -261,8 +258,8 @@ function Posts() {
                 className="heart-icon" */}
                     {/* /> */}
                   </button>
-                  <Link to={`/edit`}className="update-blog-post"> </Link>
-                  <Link to={`/delete`}className="delete-blog-post"> </Link>
+                  <Link to={`/edit/${post._id}`} className="update-blog-post"> </Link>
+                  <Link to={`/delete/${post._id}`} className="delete-blog-post"> </Link>
                   {/* <button
                     className="update-blog-post"
                     onClick={() => handleUpdateClick(post)}

@@ -36,8 +36,8 @@ function App() {
         <Route index element = {<Home/>} />
         <Route path="posts" element={<Posts />} />
         {/* <Route path="posts/:id" element={<Id />} /> */}
-        <Route path="edit" element={<Edit />} />
-        <Route path="delete" element={<Delete />} />
+        <Route path="edit/:id" element={<Edit />} />
+        <Route path="delete/:id" element={<Delete />} />
         <Route path="posts/:details" element={<Details />} />
         <Route path="about" element={<About />} />
         <Route path="register" element={<Register />} />

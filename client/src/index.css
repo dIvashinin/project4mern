@@ -177,14 +177,14 @@ border-radius: 4px; /* Apply a rounded border */
 }
 
 .update-blog-post{
-  width: 6px; /* Adjust the size of the heart icon */
-  height: 6px; /* Adjust the size of the heart icon */
+  width: 5px; /* Adjust the size of the heart icon */
+  height: 5px; /* Adjust the size of the heart icon */
   background: url('https://res.cloudinary.com/dzghua4dz/image/upload/v1699009757/siqf7vmefhzjsepd1jes.png') center/cover no-repeat;
   /* Use a heart icon image */
   background-color: #e8e0d3;
   padding: 8px;
   position: absolute; /* Position it absolutely within the .blog-list-item */
-  top: 15px; /* Adjust the vertical position */
+  top: 16px; /* Adjust the vertical position */
   right: 35px; /* Adjust the horizontal position */
   z-index: 1; /* Ensure the heart icon is above the image */
   /* opacity: 60%; */
@@ -192,14 +192,14 @@ border-radius: 4px; /* Apply a rounded border */
 }
 
 .delete-blog-post{
-  width: 6px; /* Adjust the size of the heart icon */
-  height: 6px; /* Adjust the size of the heart icon */
+  width: 5px; /* Adjust the size of the heart icon */
+  height: 5px; /* Adjust the size of the heart icon */
   background: url('https://res.cloudinary.com/dzghua4dz/image/upload/v1699009928/hg6peuj1rynjbijjix0w.png') center/cover no-repeat;
   /* Use a heart icon image */
   background-color: #e8e0d3;
   padding: 8px;
   position: absolute; /* Position it absolutely within the .blog-list-item */
-  top: 15px; /* Adjust the vertical position */
+  top: 16px; /* Adjust the vertical position */
   right: 65px; /* Adjust the horizontal position */
   z-index: 1; /* Ensure the heart icon is above the image */
   /* opacity: 60%; */
