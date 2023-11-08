@@ -112,6 +112,25 @@ const updateBlog = async (req, res) => {
     });
   }
 }
+
+const deleteBlog = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const singlePost = await blogModel.findByIdAndDelete(id);
+
+    if(!singlePost){
+      return res.status(404).json({
+        message: `cannot find blog post with ID ${id}`
+      })
+    }res.status(200).json(singlePost)
+
+  } catch (error) {
+    res.status(500).json({
+      error: "something went wrong in the server",
+    });
+  }
+}
+
   // console.log("updateImg ok :>> ", updateBlog);
   // console.log('req :>> ', req);
   // console.log("req.params :>> ", req.params);
@@ -261,4 +280,4 @@ const updateBlog = async (req, res) => {
 //   }
 // };
 
-export { uploadImage2, getAllPosts, getSinglePost, updateBlog };
+export { uploadImage2, getAllPosts, getSinglePost, updateBlog, deleteBlog };
