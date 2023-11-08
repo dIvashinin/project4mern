@@ -84,6 +84,18 @@ const getAllPosts = async (req, res) => {
   }
 };
 
+const getSinglePost = async(req,res) =>{
+  try {
+    const {id} = req.params;
+    const singlePost = await blogModel.findById(id);
+    res.status(200).json(singlePost);
+  } catch (error) {
+    res.status(500).json({
+      error: "something went wrong in the server",
+    });
+  }
+};
+
 const updateBlog = async (req, res) => {
   console.log("updateImg ok :>> ", updateBlog);
   // console.log('req :>> ', req);
@@ -234,4 +246,4 @@ const updateBlog = async (req, res) => {
 //   }
 // };
 
-export { uploadImage2, getAllPosts, updateBlog };
+export { uploadImage2, getAllPosts, getSinglePost, updateBlog };

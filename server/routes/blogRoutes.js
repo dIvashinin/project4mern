@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllPosts, uploadImage2, updateBlog } from "../controller/blogController.js";
+import { getAllPosts,getSinglePost, uploadImage2, updateBlog } from "../controller/blogController.js";
 
 import multerUpload from "../middlewares/multer.js";
 const router = express.Router();
@@ -11,6 +11,7 @@ router.post("/createBlogPost",multerUpload.single("blogImage"), uploadImage2);
 // router.post("/createBlogPost", uploadImage2);
 
 router.get("/all", getAllPosts);
+router.get("/all/:id", getSinglePost);
 
 // router.put("/updateBlogImage",multerUpload.single("blogImage"), updateBlogImage );
 
