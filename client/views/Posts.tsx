@@ -6,6 +6,7 @@ import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
 // import { faHeart } from 'font-awesome';
 import EditPostModal from "../components/ModalEditBlog";
 import { Post } from "../src/types/customTypes";
+import { Link } from "react-router-dom";
 
 function Posts() {
   // State to track user input
@@ -26,8 +27,8 @@ function Posts() {
   const [posts, setPosts] = useState<Post[]>([]);
   
   // State variables for the update form
-  const [editingPost, setEditingPost] = useState<Post>({});
-  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  // const [editingPost, setEditingPost] = useState<Post>({});
+  // const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   // Function to handle changes in the search input
   const inputChangeHandler = (e) => {
@@ -260,11 +261,11 @@ function Posts() {
                 className="heart-icon" */}
                     {/* /> */}
                   </button>
-
-                  <button
+                  <Link to={`/edit`}className="update-blog-post"> </Link>
+                  {/* <button
                     className="update-blog-post"
                     onClick={() => handleUpdateClick(post)}
-                  ></button>
+                  ></button> */}
                 </div>
                 {/* Modal for editing posts
                 <EditPostModal
