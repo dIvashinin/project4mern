@@ -262,6 +262,7 @@ function Posts() {
                     {/* /> */}
                   </button>
                   <Link to={`/edit`}className="update-blog-post"> </Link>
+                  <Link to={`/delete`}className="delete-blog-post"> </Link>
                   {/* <button
                     className="update-blog-post"
                     onClick={() => handleUpdateClick(post)}

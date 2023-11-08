@@ -16,6 +16,7 @@ import MyNavbar from "../components/Navbar";
 // import Products from "../views/Products";
 import Posts from "../views/Posts";
 import Edit from "../views/Edit";
+import Delete from "../views/Delete";
 import ErrorPage from "../views/ErrorPage";
 import Details from "../views/Details";
 import Home from "../views/Home";
@@ -36,6 +37,7 @@ function App() {
         <Route path="posts" element={<Posts />} />
         {/* <Route path="posts/:id" element={<Id />} /> */}
         <Route path="edit" element={<Edit />} />
+        <Route path="delete" element={<Delete />} />
         <Route path="posts/:details" element={<Details />} />
         <Route path="about" element={<About />} />
         <Route path="register" element={<Register />} />
