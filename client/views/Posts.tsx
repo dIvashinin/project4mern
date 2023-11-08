@@ -124,44 +124,44 @@ function Posts() {
     setSelectedFile(e.target.files![0]);
   };
 
-  // function to handle update
-  const handleUpdateClick = (post:Post) => {
-    //to store post data i want to edit and have prefill to be able to modify
-    setEditingPost(post);
-    //to show update form to user
-    setShowUpdateForm(true); // Set a state to show the update form
-  };
-  // Function to handle closing the modal
-  const handleCloseModal = () => {
-    setShowUpdateForm(false);
-  };
-  // Function to handle post updates
-  const handleUpdatePost = (updatedPost) => {
+  // // function to handle update
+  // const handleUpdateClick = (post:Post) => {
+  //   //to store post data i want to edit and have prefill to be able to modify
+  //   setEditingPost(post);
+  //   //to show update form to user
+  //   setShowUpdateForm(true); // Set a state to show the update form
+  // };
+  // // Function to handle closing the modal
+  // const handleCloseModal = () => {
+  //   setShowUpdateForm(false);
+  // };
+  // // Function to handle post updates
+  // const handleUpdatePost = (updatedPost) => {
 
-     // Remove the 'blogImage' property from the updated post
-  const { blogImage, ...postWithoutImage } = updatedPost;
+  //    // Remove the 'blogImage' property from the updated post
+  // const { blogImage, ...postWithoutImage } = updatedPost;
 
-    //PUT request to update
-    fetch('http://localhost:5001/api/posts/update', {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postWithoutImage),
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          // if successful update, close the modal
-          handleCloseModal();
-          // fetchPosts();
-        } else {
-          console.error("update failed");
-        }
-      })
-      .catch((error) => {
-        console.error("network error", error);
-      });
-  };
+  //   //PUT request to update
+  //   fetch('http://localhost:5001/api/posts/update', {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(postWithoutImage),
+  //   })
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         // if successful update, close the modal
+  //         handleCloseModal();
+  //         // fetchPosts();
+  //       } else {
+  //         console.error("update failed");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("network error", error);
+  //     });
+  // };
 
   return (
     <div>
@@ -266,13 +266,13 @@ function Posts() {
                     onClick={() => handleUpdateClick(post)}
                   ></button>
                 </div>
-                {/* Modal for editing posts */}
+                {/* Modal for editing posts
                 <EditPostModal
                   isOpen={showUpdateForm}
                   editPost={editingPost}
                   onClose={handleCloseModal}
                   onSave={handleUpdatePost}
-                />
+                /> */}
 
                 {/* // </div>{" "} */}
                 {/* <i className="fa-regular fa-heart"></i> */}
