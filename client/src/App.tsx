@@ -23,9 +23,6 @@ import Home from "../views/Home";
 
 // import PostsContextProvider from "../context/PostsContext"
 
-
-
-
 // import './App.css';
 
 function App() {
@@ -33,7 +30,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-        <Route index element = {<Home/>} />
+        <Route index element={<Home />} />
         <Route path="posts" element={<Posts />} />
         {/* <Route path="posts/:id" element={<Id />} /> */}
         <Route path="edit/:id" element={<Edit />} />
