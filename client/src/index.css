@@ -24,23 +24,26 @@ a:hover {
 }
 
 /* body { */
-  /* margin: 0; */
-  /* display: flex; */
-  /* place-items: center; */
-  /* min-width: 320px; */
-  /* min-height: 100vh; */
+/* margin: 0; */
+/* display: flex; */
+/* place-items: center; */
+/* min-width: 320px; */
+/* min-height: 100vh; */
 /* } */
 
 /* h1 { */
-  /* font-size: 3.2em; */
-  /* line-height: 1.1; */
+/* font-size: 3.2em; */
+/* line-height: 1.1; */
 /* } */
 
-.home-about-firstline{
-margin-top: 60px;
+.home-about-firstline {
+  margin-top: 60px;
 }
 
-p, h2, h3, h4{
+p,
+h2,
+h3,
+h4 {
   padding: 0px;
   margin: 0px;
 }
@@ -76,14 +79,13 @@ button:focus-visible {
 }
 
 .input-form {
-  
   border: 1px solid #ccc; /* Add a border around each blog item */
   padding-right: 3px; /* Add padding to separate items */
   margin: 2px 0; /* Add margin to space out items */
   flex: 0 0 100%; /* By default, each item takes 100% width for small screens */
-  font-family:Verdana, Geneva, Tahoma, sans-serif
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.blog-list-item{
+.blog-list-item {
   position: relative; /* to make it a relative container for absolute positioning */
   border: 1px solid #ffaaaa; /* Add a border around each blog item */
   /* padding-right: 2px; */
@@ -94,18 +96,17 @@ button:focus-visible {
   flex: 0 0 100%; /* By default, each item takes 100% width for small screens */
   border-radius: 4px; /* Apply a rounded border */
   margin-bottom: 3px;
-  
 
-@media (min-width: 768px) {
-  flex: 0 0 30%; /* For screens 768px or larger, each item takes 50% width */
-}
+  @media (min-width: 768px) {
+    flex: 0 0 30%; /* For screens 768px or larger, each item takes 50% width */
+  }
 
-@media (min-width: 1132px) {
-  flex: 0 0 25%; /* For screens 992px or larger, each item takes 33.33% width */
-}
+  @media (min-width: 1132px) {
+    flex: 0 0 25%; /* For screens 992px or larger, each item takes 33.33% width */
+  }
 }
 .blog-image {
-  max-width: 100%; 
+  max-width: 100%;
   /* Set the maximum width of the image */
   height: auto; /* Automatically adjust the height to maintain the aspect ratio */
   /* border: 1px solid #ccc;  */
@@ -121,16 +122,15 @@ button:focus-visible {
     max-width: 300px;
   }
 }
-.description-post{
-background-color: #0004ff;
-color: #ffffff;
-margin: 0px;
-padding: 0;
-font-size: 12px;
-border-radius: 4px; /* Apply a rounded border */
+.description-post {
+  background-color: #0004ff;
+  color: #ffffff;
+  margin: 0px;
+  padding: 0;
+  font-size: 12px;
+  border-radius: 4px; /* Apply a rounded border */
 }
 .zoom-container {
-  
   max-width: 100%;
   /* width: 200px;  */
   /* Set the width and height of your container */
@@ -142,9 +142,10 @@ border-radius: 4px; /* Apply a rounded border */
 }
 
 .zoom-container:hover .zoom-image {
-  transform: scale(1.2); /* Scale the image up to 120% on hover, relative to its container */
+  transform: scale(
+    1.2
+  ); /* Scale the image up to 120% on hover, relative to its container */
 }
-
 
 .heart-icon {
   width: 20px; /* Adjust the size of the heart icon */
@@ -164,7 +165,8 @@ border-radius: 4px; /* Apply a rounded border */
 .heart-icon-button {
   width: 14px; /* Adjust the size of the heart icon */
   height: 14px; /* Adjust the size of the heart icon */
-  background: url('https://res.cloudinary.com/dzghua4dz/image/upload/v1698834043/project4mern/epmegfonsab1egutezpz.png') center/cover no-repeat;
+  background: url("https://res.cloudinary.com/dzghua4dz/image/upload/v1698834043/project4mern/epmegfonsab1egutezpz.png")
+    center/cover no-repeat;
   /* Use a heart icon image */
   background-color: #e8e0d3;
   padding: 8px;
@@ -176,10 +178,11 @@ border-radius: 4px; /* Apply a rounded border */
   border-radius: 20px;
 }
 
-.update-blog-post{
+.update-blog-post {
   width: 5px; /* Adjust the size of the heart icon */
   height: 5px; /* Adjust the size of the heart icon */
-  background: url('https://res.cloudinary.com/dzghua4dz/image/upload/v1699009757/siqf7vmefhzjsepd1jes.png') center/cover no-repeat;
+  background: url("https://res.cloudinary.com/dzghua4dz/image/upload/v1699009757/siqf7vmefhzjsepd1jes.png")
+    center/cover no-repeat;
   /* Use a heart icon image */
   background-color: #e8e0d3;
   padding: 8px;
@@ -191,10 +194,11 @@ border-radius: 4px; /* Apply a rounded border */
   border-radius: 20px;
 }
 
-.delete-blog-post{
+.delete-blog-post {
   width: 5px; /* Adjust the size of the heart icon */
   height: 5px; /* Adjust the size of the heart icon */
-  background: url('https://res.cloudinary.com/dzghua4dz/image/upload/v1699009928/hg6peuj1rynjbijjix0w.png') center/cover no-repeat;
+  background: url("https://res.cloudinary.com/dzghua4dz/image/upload/v1699009928/hg6peuj1rynjbijjix0w.png")
+    center/cover no-repeat;
   /* Use a heart icon image */
   background-color: #e8e0d3;
   padding: 8px;
@@ -203,7 +207,7 @@ border-radius: 4px; /* Apply a rounded border */
   right: 65px; /* Adjust the horizontal position */
   z-index: 1; /* Ensure the heart icon is above the image */
   /* opacity: 60%; */
-  border-radius: 20px; 
+  border-radius: 20px;
 }
 
 /* Modal container */
@@ -274,7 +278,6 @@ border-radius: 4px; /* Apply a rounded border */
   background-color: #999;
 }
 
-
 /* 
 for delete button
 https://res.cloudinary.com/dzghua4dz/image/upload/v1699009928/hg6peuj1rynjbijjix0w.png
@@ -289,26 +292,31 @@ https://res.cloudinary.com/dzghua4dz/image/upload/v1699009928/hg6peuj1rynjbijjix
   position: fixed;
   top: 0;
   width: 100%;
-  
-
 }
 
-.about, .posts, .register, .login { 
-color: hsl(0, 0%, 100%); /* Link color */
-font-size: 20px;
-text-decoration: none; /* Remove underline from links */
-margin: 0 10px; /* Add spacing between links */
-transition: color 0.3s; /* Smooth color transition on hover */
+.about,
+.posts,
+.register,
+.login {
+  color: hsl(0, 0%, 100%); /* Link color */
+  font-size: 20px;
+  text-decoration: none; /* Remove underline from links */
+  margin: 0 10px; /* Add spacing between links */
+  transition: color 0.3s; /* Smooth color transition on hover */
 }
 
-.about:hover, .posts:hover, .register:hover, .login:hover{
+.about:hover,
+.posts:hover,
+.register:hover,
+.login:hover {
   color: #ffa500; /* Change link color on hover */
 }
-.about:active, .posts:active, .register:active, .login:active {
+.about:active,
+.posts:active,
+.register:active,
+.login:active {
   color: hsl(120, 100%, 50%); /* Change color when clicked */
 }
-
-
 
 @media (prefers-color-scheme: light) {
   :root {
