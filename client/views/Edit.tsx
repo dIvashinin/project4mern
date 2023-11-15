@@ -1,10 +1,11 @@
 // import React from 'react'
 // import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditPage = () => {
   let { id } = useParams();
+  const navigate = useNavigate();
   const [blog, setBlog] = useState({
     description: "",
     userName: "",
@@ -35,8 +36,20 @@ try {
 }
     };
 
-const updateBlogPost = () => {
+const updateBlogPost = async (e) => {
+e.preventDefault();
+try {
 
+    const response = await fetch(`http://localhost:5001/api/posts/all/${id}`,
+    {method: "PUT",
+blog}
+        );
+        alert ('edit success');
+        navigate('/posts');
+    
+} catch (error) {
+   alert ('edit error'); 
+}
 }
 
 useEffect(() => {
