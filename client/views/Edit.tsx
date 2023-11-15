@@ -57,6 +57,7 @@ useEffect(() => {
             // onChange={handleBlogInput}
             placeholder="tell us something about what you gonna post..."
             value={blog.description}
+            onChange={(e) => setBlog({...blog, description: e.target.value})}
             // onChange={(e) =>
             // setFormData({ ...formData, description: e.target.value })
             // }
@@ -68,6 +69,7 @@ useEffect(() => {
             value={blog.userName}
             id="userName"
             placeholder="your user name..."
+            onChange={(e) => setBlog({...blog, userName: e.target.value})}
             // onChange={handleBlogInput}
             // onChange={(e) =>
             //   setFormData({ ...formData, userName: e.target.value })
@@ -80,6 +82,7 @@ useEffect(() => {
             id="email"
             placeholder="your email..."
             value={blog.email}
+            onChange={(e) => setBlog({...blog, email: e.target.value})}
             // onChange={handleBlogInput}
             // onChange={(e) =>
             //   setFormData({ ...formData, email: e.target.value })
@@ -93,6 +96,7 @@ useEffect(() => {
             id="brand"
             placeholder="what has been drunk?!"
             value={blog.brand}
+            onChange={(e) => setBlog({...blog, brand: e.target.value})}
             // onChange={handleBlogInput}
             // onChange={(e) =>
             //   setFormData({ ...formData, brand: e.target.value })
