@@ -84,8 +84,8 @@ useEffect(() => {
     <div>
       {/* <h2>Home</h2>
       <h1 className="home-about-firstline">This is about Berlin.</h1> */}
-      <h3> edit </h3>
-      <h2> edit</h2>
+      <h3>  </h3>
+      <h2> </h2>
       <h1> edit </h1>
       <div>
         <form className="input-form" onSubmit={updateBlogPost}>
@@ -156,7 +156,7 @@ useEffect(() => {
           </button>
 
         </form>
-        <button onClick={deleteBlogPost}>Delete</button>
+        <button onClick={deleteBlogPost} className="delete-blog" >Delete</button>
       </div>
       {/* <NavLink to="/posts">
         <img

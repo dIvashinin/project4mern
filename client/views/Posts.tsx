@@ -253,17 +253,17 @@ function Posts() {
               <li key={post._id} className="blog-list-item">
                 {/* Add a div for the heart symbol */}
                 <div>
-                  <button className="heart-icon-button">
+                  <button title="add to favourites" className="heart-icon-button">
                     {/* <img
                     src={'https://res.cloudinary.com/dzghua4dz/image/upload/v1698834043/project4mern/epmegfonsab1egutezpz.png'}  
                 className="heart-icon" */}
                     {/* /> */}
                   </button>
-                  <Link to={`/edit/${post._id}`} className="update-blog-post"> </Link>
-                  <Link 
+                  <Link to={`/edit/${post._id}`} title="edit or delete" className="update-blog-post"> </Link>
+                  {/* <Link 
                   // onClick={deleteBlog} 
                   to={`/delete/${post._id}`} 
-                  className="delete-blog-post"> </Link>
+                  className="delete-blog-post"> </Link> */}
                   {/* <button
                     className="update-blog-post"
                     onClick={() => handleUpdateClick(post)}
