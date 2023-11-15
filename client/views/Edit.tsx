@@ -33,8 +33,12 @@ try {
 } catch (error) {
     console.log("error :>> ", error);
 }
-
     };
+
+const updateBlogPost = () => {
+
+}
+
 useEffect(() => {
  getBlog();
 }, [])
@@ -45,9 +49,71 @@ useEffect(() => {
       <h1 className="home-about-firstline">This is about Berlin.</h1> */}
       <h3> edit </h3>
       <h2> edit</h2>
-      <h1> edit {id}</h1>
+      <h1> edit </h1>
       <div>
-        {blog.description}
+        <form className="input-form" onSubmit={updateBlogPost}>
+          <textarea
+            name="description"
+            // onChange={handleBlogInput}
+            placeholder="tell us something about what you gonna post..."
+            value={blog.description}
+            // onChange={(e) =>
+            // setFormData({ ...formData, description: e.target.value })
+            // }
+          />
+          <label htmlFor="description">description</label>
+          <input
+            type="text"
+            name="userName"
+            value={blog.userName}
+            id="userName"
+            placeholder="your user name..."
+            // onChange={handleBlogInput}
+            // onChange={(e) =>
+            //   setFormData({ ...formData, userName: e.target.value })
+            // }
+          />
+          <label htmlFor="userName">user name</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="your email..."
+            value={blog.email}
+            // onChange={handleBlogInput}
+            // onChange={(e) =>
+            //   setFormData({ ...formData, email: e.target.value })
+            // }
+          />
+          <label htmlFor="email">email</label>
+
+          <input
+            type="text"
+            name="brand"
+            id="brand"
+            placeholder="what has been drunk?!"
+            value={blog.brand}
+            // onChange={handleBlogInput}
+            // onChange={(e) =>
+            //   setFormData({ ...formData, brand: e.target.value })
+            // }
+          />
+          <label htmlFor="brand">brand</label>
+
+          {/* <input
+            type="file"
+            name="blogImage"
+            id="file"
+            onChange={handleImageChange}
+            // onChange={(e) =>}
+          /> */}
+          <button
+            type="submit"
+            // onSubmit={handlePostSubmit}
+          >
+            edit it
+          </button>
+        </form>
       </div>
       {/* <NavLink to="/posts">
         <img
