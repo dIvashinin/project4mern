@@ -42,8 +42,14 @@ try {
 
     const response = await fetch(`http://localhost:5001/api/posts/all/${id}`,
     {method: "PUT",
-blog}
-        );
+headers: {
+    "Content-Type": "application/json",
+},
+body: JSON.stringify(blog),
+});
+if (!response.ok) {
+    throw new Error (`http error! Status: $(response.status)`);
+}
         alert ('edit success');
         navigate('/posts');
     
