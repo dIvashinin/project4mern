@@ -56,7 +56,25 @@ if (!response.ok) {
 } catch (error) {
    alert ('edit error'); 
 }
-}
+};
+
+const deleteBlogPost = async () => {
+    try {
+      const response = await fetch(`http://localhost:5001/api/posts/all/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      alert("Delete success");
+      navigate('/posts');
+    } catch (error) {
+      console.error("Delete error:", error);
+      alert("Delete error");
+    }
+  };
 
 useEffect(() => {
  getBlog();
@@ -136,7 +154,9 @@ useEffect(() => {
           >
             edit it
           </button>
+
         </form>
+        <button onClick={deleteBlogPost}>Delete</button>
       </div>
       {/* <NavLink to="/posts">
         <img

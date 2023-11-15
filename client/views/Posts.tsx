@@ -260,7 +260,10 @@ function Posts() {
                     {/* /> */}
                   </button>
                   <Link to={`/edit/${post._id}`} className="update-blog-post"> </Link>
-                  <Link to={`/delete/${post._id}`} className="delete-blog-post"> </Link>
+                  <Link 
+                  // onClick={deleteBlog} 
+                  to={`/delete/${post._id}`} 
+                  className="delete-blog-post"> </Link>
                   {/* <button
                     className="update-blog-post"
                     onClick={() => handleUpdateClick(post)}
