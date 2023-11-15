@@ -1,6 +1,6 @@
 // import React from 'react'
 // import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const EditPage = () => {
@@ -12,15 +12,32 @@ const EditPage = () => {
     brand: "",
   });
   const getBlog = async () => {
-    const response = await fetch(`http://localhost:5001/api/posts/all/${id}`);
-    console.log("response :>> ", response);
-    //     setBlog({
-    //         description: response.description,
-    // userName: "",
-    // email: "",
-    // brand: "",
-    //     })
-  };
+
+try {
+    const response = await fetch(`http://localhost:5001/api/posts/all/${id}`,
+    {method: "GET"}
+        );
+
+        if (!response.ok) {
+            throw new Error(`http error! Status: $(response.status)`);
+        }
+        const data = await response.json();
+        setBlog({
+            description: data.description,
+            userName: data.userName,
+            email: data.email,
+            brand: data.brand,
+        })
+        console.log("data :>> ", data);
+    
+} catch (error) {
+    console.log("error :>> ", error);
+}
+
+    };
+useEffect(() => {
+ getBlog();
+}, [])
 
   return (
     <div>
@@ -29,6 +46,9 @@ const EditPage = () => {
       <h3> edit </h3>
       <h2> edit</h2>
       <h1> edit {id}</h1>
+      <div>
+        {blog.description}
+      </div>
       {/* <NavLink to="/posts">
         <img
           className="eingang-picture"
