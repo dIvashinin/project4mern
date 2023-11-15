@@ -47,6 +47,7 @@ function Posts() {
   // Function to handle the form submission (creating a new blog post)
   const handlePostSubmit = async (e) => {
     e.preventDefault();
+    
    
     // console.log('e ', e.target.value);
     // Create a new FormData object to send the form data (description, user name, email, and selected file)
@@ -56,7 +57,7 @@ function Posts() {
     formdata.append("email", formData.email);
     formdata.append("blogImage", selectedFile as File); // we use it
     formdata.append("brand", formData.brand);
-
+    
     try {
       // Send a POST request to create a new blog post with the provided data
       const response = await fetch(
