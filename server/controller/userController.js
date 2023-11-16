@@ -169,7 +169,11 @@ if (checkPassword) {
 }
 
 }
-export {uploadImage, register, login, getAllUsers};
+
+const getProfile = async () => {
+console.log('getProfile ');
+}
+export {uploadImage, register, login, getAllUsers, getProfile};
 
 
 

@@ -31,6 +31,7 @@ const addMiddlewares = () => {
     cloudinaryConfig();
     //3.initialize passport
     passport.initialize();
+    //4.call function that loads our own setup on passport
     passportConfig(passport);
 };
 
