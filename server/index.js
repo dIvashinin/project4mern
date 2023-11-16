@@ -1,9 +1,11 @@
-import express, { json } from "express";
-import mongoose from "mongoose";
 // older notation
 // const express = require("express");
+import express, { json } from "express";
+import mongoose from "mongoose";
 import cors from "cors";
 import * as dotenv from "dotenv";
+import passport from "passport";
+
 import productRoutes from "./routes/productRoutes.js";
 import router from "./routes/testRoute.js";
 import blogRoutes from "./routes/blogRoutes.js";
@@ -24,8 +26,11 @@ const addMiddlewares = () => {
     app.use(express.urlencoded({
         extended: true,
     }));
-    cloudinaryConfig()
-}
+    cloudinaryConfig();
+    //3.initialize passport
+    passport.initialize();
+    passportConfig(passport)
+};
 
 const addRoutes = () => {
     app.use("/api", router);
