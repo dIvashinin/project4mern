@@ -1,11 +1,15 @@
 import {ExtractJwt, Strategy as JwtStrategy} from "passport-jwt";
+import * as dotenv from "dotenv";
+dotenv.config();
 
+console.log('process.env.SECRET :>> ', process.env.SECRET);
 const opts = {
     secretOrKey: process.env.SECRET,
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken();
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 };
+
 //1.Define Strategy
-const JwtPassportStrategy = new JwtStrategy(opts, function(jwt_payload, done) {
+const jwtPassportStrategy = new JwtStrategy(opts, function(jwt_payload, done) {
     User.findOne({id: jwt_payload.sub}, function(err, user) {
         if (err) {
             return done(err, false);
@@ -21,7 +25,7 @@ const JwtPassportStrategy = new JwtStrategy(opts, function(jwt_payload, done) {
 //2.use this strategy with passport
 
 const passportConfig = (passport) => {
-passport.use(JwtPassportStrategy);
+passport.use(jwtPassportStrategy);
 };
 
 export default passportConfig;

@@ -4,6 +4,7 @@ import express, { json } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import * as dotenv from "dotenv";
+dotenv.config();
 import passport from "passport";
 
 import productRoutes from "./routes/productRoutes.js";
@@ -12,10 +13,11 @@ import blogRoutes from "./routes/blogRoutes.js";
 import brandRoutes from "./routes/brandRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import cloudinaryConfig from "./config/cloudinaryConfig.js";
+import passportConfig from "./config/passport.js";
+
 
 
 // import productModel from "./models/productModel.js";
-dotenv.config();
 // const router = express.Router();
 
 const app=express();
@@ -29,7 +31,7 @@ const addMiddlewares = () => {
     cloudinaryConfig();
     //3.initialize passport
     passport.initialize();
-    passportConfig(passport)
+    passportConfig(passport);
 };
 
 const addRoutes = () => {
