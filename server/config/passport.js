@@ -2,7 +2,7 @@ import {ExtractJwt, Strategy as JwtStrategy} from "passport-jwt";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-console.log('process.env.SECRET :>> ', process.env.SECRET);
+// console.log('process.env.SECRET :>> ', process.env.SECRET);
 const opts = {
     secretOrKey: process.env.SECRET,
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
