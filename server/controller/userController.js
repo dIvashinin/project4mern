@@ -170,8 +170,9 @@ if (checkPassword) {
 
 }
 
-const getProfile = async () => {
+const getProfile = async (req, res) => {
 console.log('getProfile ');
+console.log('req.user :>> ', req.user);
 }
 export {uploadImage, register, login, getAllUsers, getProfile};
 
