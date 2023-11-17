@@ -20,6 +20,7 @@ import Delete from "../views/Delete";
 import ErrorPage from "../views/ErrorPage";
 import Details from "../views/Details";
 import Home from "../views/Home";
+import Profile from "../views/Profile";
 
 // import PostsContextProvider from "../context/PostsContext"
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
+        <Route path="profile" element={<Profile />} />
         {/* <Route path="*" element = {<ErrorPage/>} /> */}
       </Route>
     )

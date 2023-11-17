@@ -23,13 +23,13 @@ a:hover {
   color: #535bf2;
 }
 
-/* body { */
-/* margin: 0; */
+body {
+margin-top: 75px;
 /* display: flex; */
 /* place-items: center; */
 /* min-width: 320px; */
 /* min-height: 100vh; */
-/* } */
+}
 
 /* h1 { */
 /* font-size: 3.2em; */
@@ -300,7 +300,8 @@ https://res.cloudinary.com/dzghua4dz/image/upload/v1699009928/hg6peuj1rynjbijjix
 .about,
 .posts,
 .register,
-.login {
+.login,
+.profile {
   color: hsl(0, 0%, 100%); /* Link color */
   font-size: 20px;
   text-decoration: none; /* Remove underline from links */
@@ -311,13 +312,15 @@ https://res.cloudinary.com/dzghua4dz/image/upload/v1699009928/hg6peuj1rynjbijjix
 .about:hover,
 .posts:hover,
 .register:hover,
-.login:hover {
+.login:hover,
+.profile:hover {
   color: #ffa500; /* Change link color on hover */
 }
 .about:active,
 .posts:active,
 .register:active,
-.login:active {
+.login:active,
+.profile:active {
   color: hsl(120, 100%, 50%); /* Change color when clicked */
 }
 
