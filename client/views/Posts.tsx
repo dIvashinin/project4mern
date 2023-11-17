@@ -1,4 +1,8 @@
-import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
+import 
+// React,
+ { useState, useEffect, 
+  FormEvent, 
+  ChangeEvent } from "react";
 // import EditPostModal from "../components/ModalEditBlog";
 import { Post } from "../src/types/customTypes";
 import { Link } from "react-router-dom";
@@ -6,6 +10,7 @@ import { Link } from "react-router-dom";
 function Posts() {
   // State to track user input
   const [inputText, setInputText] = useState("");
+  console.log('inputText :>> ', inputText);
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
   //we form data, it's empty. that's a built-in object
   // State to hold form data (description, user name, email, and selected file)
@@ -26,7 +31,7 @@ function Posts() {
   // const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   // Function to handle changes in the search input
-  const inputChangeHandler = (e) => {
+  const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     // When the user types in the search input, this function updates the 'inputText' state with the text.
     // console.log("event.target.value :>> ", e.target.value);
     const text = e.target.value;
@@ -45,13 +50,13 @@ function Posts() {
 
   //here goes our handler of post
   // Function to handle the form submission (creating a new blog post)
-  const handlePostSubmit = async (e) => {
+  const handlePostSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
    
     // console.log('e ', e.target.value);
     // Create a new FormData object to send the form data (description, user name, email, and selected file)
-    const formdata = new FormData();
+    const formdata = new FormData(e.target as HTMLFormElement);
     formdata.append("description", formData.description);
     formdata.append("userName", formData.userName);
     formdata.append("email", formData.email);
@@ -69,6 +74,7 @@ function Posts() {
       );
       // Handle the response here
       const result = await response.json();
+      console.log('result :>> ', result);
       //attach the url received in the response to the formData variable , e.g.: setFormData({...formData, userImage:result.image})
       // do another fetch request to an endpoint sending the formData , now with all the information already available
       const updatedPostsResponse = await fetch(
@@ -97,7 +103,7 @@ function Posts() {
       .catch((error) => console.error("Error fetching posts:", error));
   }, []);
 
-  const handleBlogInput = (e) => {
+  const handleBlogInput = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     // ChangeEvent<HTMLTextAreaElement>
     // const handleBlogInput = (e:ChangeEvent<HTMLInputElement>) => {
     // this one isn't working because i overwrite formdata each time:

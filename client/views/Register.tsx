@@ -47,6 +47,7 @@ function Register() {
       console.log("result :>> ", result);
       //here we get the URL for the user profile pic
       setNewUser({ ...newUser, userImage: result.userImage });
+      alert ("image upload success");
     } catch (error) {
       console.log("error :>> ", error);
     }
@@ -85,6 +86,7 @@ function Register() {
       );
       const result = await response.json();
       console.log("result :>> ", result);
+      alert("you are successfully registered");
     } catch (error) {
       console.log("error :>> ", error);
     }

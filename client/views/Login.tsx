@@ -50,6 +50,7 @@ try {
         const result:LoginResponse = await response.json();
         // console.log('result :>> ', result.user.userName);
         console.log('result :>> ', result);
+        alert("you are logged in!")
         const token = result.token;
         // we need a place to store token - either Local Storage or Cookies
         if (token) {
@@ -78,6 +79,7 @@ try {
 const logout = () => {
   localStorage.removeItem("token");
   setIsUserLogged (false);
+  alert ("you are logged out!");
 }
 
 useEffect(() => {

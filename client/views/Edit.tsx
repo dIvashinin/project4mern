@@ -1,6 +1,6 @@
 // import React from 'react'
 // import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditPage = () => {
@@ -36,7 +36,7 @@ try {
 }
     };
 
-const updateBlogPost = async (e) => {
+const updateBlogPost = async (e:FormEvent) => {
 e.preventDefault();
 const token = localStorage.getItem("token");
 try {
