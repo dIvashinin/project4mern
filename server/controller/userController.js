@@ -173,7 +173,21 @@ if (checkPassword) {
 const getProfile = async (req, res) => {
 console.log('getProfile ');
 console.log('req.user :>> ', req.user);
+if (req.user) {
+   res.status(200).json({
+    user:{
+        userName: req.user.userName,
+        email: req.user.email,
+        userImage: req.user.userImage,
+
+    }
+   }) 
+} if (!req.user) {
+    res.status(200).json({
+        msg:"you need to login again"
+    })
 }
+};
 export {uploadImage, register, login, getAllUsers, getProfile};
 
 
