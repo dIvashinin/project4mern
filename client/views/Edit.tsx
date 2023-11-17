@@ -38,12 +38,14 @@ try {
 
 const updateBlogPost = async (e) => {
 e.preventDefault();
+const token = localStorage.getItem("token");
 try {
 
     const response = await fetch(`http://localhost:5001/api/posts/all/${id}`,
     {method: "PUT",
 headers: {
     "Content-Type": "application/json",
+    'Authorization': `Bearer ${token}`,
 },
 body: JSON.stringify(blog),
 });
@@ -54,14 +56,19 @@ if (!response.ok) {
         navigate('/posts');
     
 } catch (error) {
-   alert ('edit error'); 
+   alert ('"you are probably not logged in!"'); 
 }
 };
 
 const deleteBlogPost = async () => {
+  const token = localStorage.getItem("token");
     try {
       const response = await fetch(`http://localhost:5001/api/posts/all/${id}`, {
         method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`,
+      },
       });
 
       if (!response.ok) {
@@ -72,7 +79,7 @@ const deleteBlogPost = async () => {
       navigate('/posts');
     } catch (error) {
       console.error("Delete error:", error);
-      alert("Delete error");
+      alert("you are probably not logged in!");
     }
   };
 

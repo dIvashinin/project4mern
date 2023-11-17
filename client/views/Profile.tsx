@@ -95,7 +95,7 @@ function Profile() {
         <h2>
             {/* {user? user.userName: " " } */}
          Profile</h2>
-<h2>hi {user?.userName}! good to see you</h2>
+        <h2>hi {user?.userName}! good to see you</h2>
         <button onClick={getProfile}>get profile</button>
         <div>
         {user && <img className='image-user-profile' src={user.userImage} style={{width: "100px"}}/>}
