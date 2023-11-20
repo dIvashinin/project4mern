@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 function Posts() {
   // State to track user input
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState<String>("");
   console.log('inputText :>> ', inputText);
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
   //we form data, it's empty. that's a built-in object
@@ -22,6 +22,7 @@ function Posts() {
     // blogImage: '',
   });
   // State to track the selected file
+  // const [selectedFile, setSelectedFile] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | String>("");
   // State to store the list of blog posts
   const [posts, setPosts] = useState<Post[]>([]);
@@ -50,13 +51,15 @@ function Posts() {
 
   //here goes our handler of post
   // Function to handle the form submission (creating a new blog post)
-  const handlePostSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  // const handlePostSubmit = async (e) => {
+    const handlePostSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
    
     // console.log('e ', e.target.value);
     // Create a new FormData object to send the form data (description, user name, email, and selected file)
-    const formdata = new FormData(e.target as HTMLFormElement);
+    const formdata = new FormData();
+    // const formdata = new FormData(e.target as HTMLFormElement);
     formdata.append("description", formData.description);
     formdata.append("userName", formData.userName);
     formdata.append("email", formData.email);
@@ -103,7 +106,8 @@ function Posts() {
       .catch((error) => console.error("Error fetching posts:", error));
   }, []);
 
-  const handleBlogInput = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  // const handleBlogInput = (e) => {
+    const handleBlogInput = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     // ChangeEvent<HTMLTextAreaElement>
     // const handleBlogInput = (e:ChangeEvent<HTMLInputElement>) => {
     // this one isn't working because i overwrite formdata each time:
@@ -123,7 +127,8 @@ function Posts() {
   };
 
   // Function to handle changes in the selected file input
-  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+  // const handleImageChange = (e) => {
+    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     // setFormData({ ...formData, userImage: e.target.files[0] });
     //we update the selectedFile state
     setSelectedFile(e.target.files![0]);
